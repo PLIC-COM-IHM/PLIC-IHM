@@ -8,62 +8,11 @@
 
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="../../lib/js/jquery.mobile/jquery.mobile-1.1.0-rc.1.css">
 	<script src="../../lib/js/jquery-1.7.1.min.js"></script>
+	
 	<script src="../../../../tuiojs/src/tuio.js"></script>
 	<script src="../../../../tuiojs/connector/npTuioClient/tuiojs.npTuioClient.js"></script>
-	
-	<script type="text/javascript">
-	var canvas;
-	var ctx;
-	var w = 0;
-	var h = 0;
-
-	var timer;
-	var updateStarted = false;
-
-
-	function update() {
-		if (updateStarted)
-			return;
-		updateStarted = true;
-	
-		var i, len = tuio.cursors.length;
-	
-		if (len)
-			console.log(len);
-		for (i=0; i<len; i++) {
-			var obj = tuio.cursors[i];
-			var x = obj.x;
-			var y = obj.y;
-			var px = x * w;
-			var py = y * h;
-		
-			console.log(x + " - " + y);
-		}
-
-		updateStarted = false;
-	}
-
-	$(document).ready(function() {
-		var body = $('body');
-	
-		$('div#rotate').click(function() {
-			if (body.hasClass('up'))
-			{
-				body.addClass('down');
-				body.removeClass('up');
-			}
-			else
-			{
-				body.addClass('up');
-				body.removeClass('down');
-			}
-		});
-	
-		tuio.start();
-		timer = setInterval(update, 15);
-	});
-	</script>
 	
 </head>
 <body class="up">
