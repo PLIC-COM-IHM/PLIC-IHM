@@ -1,0 +1,126 @@
+html, body{
+	height: 100%;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	background-color: #151515 !important;
+}
+
+#__tuiojs_connector_npTuioClient {
+	position: fixed;
+	top: -1000px;
+}
+
+div.container {
+	width: 100%;
+	padding-bottom: 100px;
+}
+
+body {
+	background-color: #fff;
+	margin: 0;
+}
+
+/* @group Tile */
+
+.tile {
+	padding: 10px;
+	margin-top: 20px;
+}
+
+/* @group Tile Colors */
+
+.tile.yellow, .tile.yellow div {
+	background-color: #fedc00;
+	color: #555;
+	font-weight: bold;
+}
+
+.tile.blue, .tile.blue div {
+	background-color: #0096d7;
+	color: #fff;
+	font-weight: bold;
+}
+
+.tile.green, .tile.green div {
+	background-color: #85c21f;
+	color: #fff;
+	font-weight: bold;
+}
+
+.tile.red, .tile.red div {
+	background-color: #d90013;
+	color: #fff;
+	font-weight: bold;
+}
+
+
+
+/* @end */
+
+/* @group Tile Flip */
+
+.tile.flip > .content {
+	# -webkit-perspective: 1400;
+	-webkit-perspective: 3000;
+}
+
+.tile.flip > .content > .card {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition: 1s;
+}
+
+.tile.flip > .content > .card > .face {
+	position: absolute;
+	-webkit-backface-visibility: hidden;
+}
+
+.tile.flip > .content > .card > .back {
+	
+	-webkit-transform: rotateY(-180deg);
+	position: absolute;
+	text-align: center;
+}
+
+.tile.flip > .content > .card > .back > h2 {
+	margin-top: 65px;
+}
+
+.tile.flip > .content > .card.flipped {
+	-webkit-transform: rotateY(-180deg);
+}
+
+/* @end */
+
+/* @group Tile Text */
+
+.tile.text {
+	overflow: hidden;
+	display: inline-block;
+}
+
+.tile.text > div.content {
+	position: relative;
+	top: -25px;
+}
+
+.tile.text > div.mask-top {
+	height: 10px;
+	position: relative;
+	z-index: 1000;
+	left: 0;
+	top: 140px;
+}
+
+.tile.text > div.mask-bottom {
+	height: 10px;
+	position: relative;
+	z-index: 1000;
+	left: 0;
+	top: -20px;
+}
+
+
+
+/* @end */
+
+
+/* @end */
