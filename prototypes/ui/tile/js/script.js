@@ -87,7 +87,7 @@ function animateFlipTiles()
 		
 		flipTileContent($(tile));
 	
-		setTimeout(function() { animateFlipTiles() }, 8000);
+		setTimeout(function() { animateFlipTiles() }, 5000);
 	});
 	
 }
@@ -115,5 +115,5 @@ $(document).ready(function($) {
 	});
 	
 	// Starts to randomly flip tiles
-	setTimeout(function () { animateFlipTiles() }, 500);
+	setTimeout(function () { animateFlipTiles() }, 1000);
 });
