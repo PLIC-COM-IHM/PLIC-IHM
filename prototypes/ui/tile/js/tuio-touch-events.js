@@ -1,14 +1,61 @@
+// 
 var TAP_DURATION = 250;
 var TAP_HOLD_DURATION = 4 * TAP_DURATION;
+var SCROLL_MIN_DELTA = 1;
+var SCROLL_ACCELERATION_POINTS_TO_WATCH = 15;
+var SCROLL_ACCELERATION_MIN_STD_DEVIATION = 0.03;
 
 // Sets Gestures Identifiers
 var GESTURE_TAP = 'gestureTap';
 var GESTURE_TAP_HOLD = 'gestureTapHold';
+var GESTURE_SCROLL = 'gestureScroll';
 
+var ongoingGestures = [
+	GESTURE_TAP_HOLD,
+	GESTURE_SCROLL
+];
 
 var isUpdating = false;
-
 var gestures = {};
+
+
+function getLastCoordinates(numberOfPoints, gesture, index) {
+	var pathLength = gesture.object.path.length;
+	
+	if (pathLength < numberOfPoints)
+		numberOfPoints = pathLength;
+	
+	result = [];
+	for (var i = 1; i <= numberOfPoints; i++) {
+		result.push(gesture.object.path[pathLength - i][index]);
+	}
+	
+	return result;
+}
+
+function getLastXCoordinates(numberOfPoints, gesture) {
+	return getLastCoordinates(numberOfPoints, gesture, 0);;
+}
+
+function getLastYCoordinates(numberOfPoints, gesture) {
+	return getLastCoordinates(numberOfPoints, gesture, 1);
+}
+
+function getAveragePoint(gesture) {
+	var len = gesture.object.path.length;
+	var x = 0;
+	var y = 0;
+	
+	for (var i = 0; i < len; i++)
+		x += gesture.object.path[i][0];
+	for (var i = 0; i < len; i++)
+		y += gesture.object.path[i][1];
+	
+	x = (x / len) * BODY_WIDTH;
+	y = (y / len) * BODY_HEIGHT;
+	
+	return [x, y];
+}
 
 function isTapGesture(gestureLength, point) {
 	return (gestureLength < TAP_DURATION && point.object.path.length < 13);
@@ -30,20 +77,41 @@ function performTapHoldGesture(x, y) {
 	$(element).trigger('taphold');
 }
 
-function getAveragePoint(gesture) {
-	var len = gesture.object.path.length;
-	var x = 0;
-	var y = 0;
+function performScrollGesture(gesture) {
+	var pathLength = gesture.object.path.length;
+	var lastPoint = gesture.object.path[pathLength - 1];
+	var penultimatePoint = gesture.object.path[pathLength - 2];
 	
-	for (var i = 0; i < len; i++)
-		x += gesture.object.path[i][0];
-	for (var i = 0; i < len; i++)
-		y += gesture.object.path[i][1];
+	if (penultimatePoint && lastPoint) {
+		var y1 = parseInt(penultimatePoint[1] * BODY_HEIGHT);
+		var y2 = parseInt(lastPoint[1] * BODY_HEIGHT);
+		var delta = y2 - y1;
+	}
+	else
+		return false;
 	
-	x = (x / len) * $('body').width();
-	y = (y / len) * $('body').height();
+	if (y1 != y2 && Math.abs(delta) > SCROLL_MIN_DELTA) {
+		
+		var lastPoints = getLastYCoordinates(SCROLL_ACCELERATION_POINTS_TO_WATCH, gesture);
+		var standardDeviation = getStandardDeviation(lastPoints);
+		
+		var coeff = 1;
+		if (standardDeviation >= SCROLL_ACCELERATION_MIN_STD_DEVIATION) {
+			var coeff = (1 / SCROLL_ACCELERATION_MIN_STD_DEVIATION) * standardDeviation;
+		}
+		
+		
+		var top = $(window).scrollTop();
+		$(window).scrollTop(top - delta * coeff);
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+function performEndScrollGesture() {
 	
-	return [x, y];
 }
 
 function analyseEndedGesture(gesture) {
@@ -61,6 +129,15 @@ function analyseEndedGesture(gesture) {
 	}
 }
 
+function invalidateOngoingGestures() {
+	$.each(gestures, function(key, value) {
+		var activeGestures = $(this)['activeGestures'];
+		$.each(activeGestures, function(key, value) {
+			$(this) = false;
+		});
+	});
+}
+
 function analyseOngoingGesture(gesture) {
 	var currentDate = new Date();
 	var gestureDuration = currentDate.getTime() - gesture.date.getTime();
@@ -70,10 +147,19 @@ function analyseOngoingGesture(gesture) {
 	var x = averagePoint[0];
 	var y = averagePoint[1];
 	
-	if (gesture.activeGestures.GESTURE_TAP_HOLD == false
+	
+	if (performScrollGesture(gesture)) {
+		gesture.activeGestures.GESTURE_SCROLL = true;
+	}
+	else {
+		// The gesture did not scroll (usefull if the touch finishes without scrolling)
+		gesture.activeGestures.GESTURE_SCROLL = false;
+		
+		if (gesture.activeGestures.GESTURE_TAP_HOLD == false
 			&& isTapHoldGesture(gestureDuration, gesture)) {
 		performTapHoldGesture(x, y);
 		gesture.activeGestures.GESTURE_TAP_HOLD = true;
+		}
 	}
 }
 
@@ -89,10 +175,13 @@ function update() {
 	// Creates an empty object to hold those fingers IDs
 	var currents = {};
 	if (len) {
-		for (var i=0; i < len; i++) {
+		for (var i = 0; i < len; i++) {
 			var gesture = tuio.cursors[i];
 			var x = gesture.x;
 			var y = gesture.y;
+			// console.log(x, ', ', y);
+			console.log(y);
+			
 			// Gesture unique ID
 			var sid = gesture.sid
 			// console.log(sid);
@@ -108,12 +197,14 @@ function update() {
 					'lastPositionSeen' : gesture.path[gesture.path.length - 1],
 					'activeGestures' : {
 						GESTURE_TAP : false,
-						GESTURE_TAP_HOLD : false
+						GESTURE_TAP_HOLD : false,
+						GESTURE_SCROLL : false
 					}
 				};
 			}
+			// The object has alreaady been detected
 			else {
-				// Updates the last position seen
+				// Updates the last position seen of the touch input
 				gestures[sid].lastPositionSeen = gesture.path[gesture.path.length - 1]
 			}
 		};
@@ -121,25 +212,30 @@ function update() {
 	}
 	
 	$.each(gestures, function(key, value) {
-		// A finger disappeared from the touch screen
+		// Analyses possible gestures when a finger disappears from the screen
 		if (currents[key] == undefined) {
 			// console.log(key);
+			
 			// Analyse gesture when it disapears
 			analyseEndedGesture(value);
 			// Removes the gesture of the gestures repository
 			delete gestures[key];
 		}
+		// Analyses possible gestures while a finger is on the screen
 		else {
 			analyseOngoingGesture(value);
 		}
 	});
 	
-	// Stops the update the current touches status
+	// Stops to update the current touches status
 	isUpdating = false;
 }
 
 $(document).ready(function() {
 	var body = $('body');
+	
+	BODY_WIDTH = body.width();
+	BODY_HEIGHT = body.height();
 	
 	$('#rotate').bind('tap', function() {
 		if (body.hasClass('up'))
