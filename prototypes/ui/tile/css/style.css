@@ -11,6 +11,7 @@ html, body{
 
 div.container {
 	width: 100%;
+	height: 100%;
 	padding-bottom: 100px;
 }
 
@@ -22,8 +23,16 @@ body {
 /* @group Tile */
 
 .tile {
-	padding: 10px;
-	margin-top: 20px;
+	# padding: 10px;
+	margin-bottom: 20px;
+}
+
+.tile > .content {
+	margin: 10px;
+}
+
+.tile.pop {
+	-webkit-transform: scale(1.1, 1.1) scale(1, 1);
 }
 
 /* @group Tile Colors */
@@ -58,6 +67,10 @@ body {
 
 /* @group Tile Flip */
 
+.tile.flip > .content > .card > .back {
+	margin: 10px;
+}
+
 .tile.flip > .content {
 	# -webkit-perspective: 1400;
 	-webkit-perspective: 3000;
@@ -78,10 +91,11 @@ body {
 	-webkit-transform: rotateY(-180deg);
 	position: absolute;
 	text-align: center;
+	margin: 0;
 }
 
 .tile.flip > .content > .card > .back > h2 {
-	margin-top: 65px;
+	margin-top: 55px;
 }
 
 .tile.flip > .content > .card.flipped {
@@ -103,11 +117,12 @@ body {
 }
 
 .tile.text > div.mask-top {
+	background-color: pink #important;
 	height: 10px;
 	position: relative;
-	z-index: 1000;
+	z-index: 1001;
 	left: 0;
-	top: 140px;
+	top: 160px;
 }
 
 .tile.text > div.mask-bottom {
@@ -115,12 +130,43 @@ body {
 	position: relative;
 	z-index: 1000;
 	left: 0;
-	top: -20px;
+	top: -10px;
 }
 
 
 
 /* @end */
+
+
+/* @end */
+
+/* @group Button */
+
+/* @group Arrow */
+
+div.arrow {
+	width: 150px;
+	height: 150px;
+}
+
+#previous-page {
+	background: url(../img/arrow-left.png) no-repeat;
+}
+
+#next-page {
+	background: url(../img/arrow-right.png) no-repeat;
+}
+
+/*#previous-page.disabled {
+	background: url(../img/arrow-left-disabled.png) no-repeat;
+}
+
+#next-page.disabled {
+	background: url(../img/arrow-right-disabled.png) no-repeat;
+}*/
+
+/* @end */
+
 
 
 /* @end */
