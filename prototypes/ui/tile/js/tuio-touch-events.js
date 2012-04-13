@@ -1,9 +1,13 @@
 // 
 var TAP_DURATION = 250;
 var TAP_HOLD_DURATION = 4 * TAP_DURATION;
-var SCROLL_MIN_DELTA = 1;
+var SCROLL_MIN_DELTA = 0;
 var SCROLL_ACCELERATION_POINTS_TO_WATCH = 15;
 var SCROLL_ACCELERATION_MIN_STD_DEVIATION = 0.03;
+
+var SCROLL_DECELERATION_TIME = 1000;
+
+var UPDATE_INTERVAL = 20;
 
 // Sets Gestures Identifiers
 var GESTURE_TAP = 'gestureTap';
@@ -91,7 +95,6 @@ function performScrollGesture(gesture) {
 		return false;
 	
 	if (y1 != y2 && Math.abs(delta) > SCROLL_MIN_DELTA) {
-		
 		var lastPoints = getLastYCoordinates(SCROLL_ACCELERATION_POINTS_TO_WATCH, gesture);
 		var standardDeviation = getStandardDeviation(lastPoints);
 		
@@ -99,7 +102,6 @@ function performScrollGesture(gesture) {
 		if (standardDeviation >= SCROLL_ACCELERATION_MIN_STD_DEVIATION) {
 			var coeff = (1 / SCROLL_ACCELERATION_MIN_STD_DEVIATION) * standardDeviation;
 		}
-		
 		
 		var top = $(window).scrollTop();
 		$(window).scrollTop(top - delta * coeff);
@@ -110,8 +112,43 @@ function performScrollGesture(gesture) {
 	}
 }
 
-function performEndScrollGesture() {
+function decelerateScroll(currentDecelerationTime, speed) {
+	if (currentDecelerationTime < SCROLL_DECELERATION_TIME) {
+		var sampledTime = ((Math.PI / 2) / SCROLL_DECELERATION_TIME) * currentDecelerationTime;
+		var sign = (speed > 0) ? 1 : -1;
+		var newSpeed = Math.cos(sampledTime) * speed;
+		
+		// console.log(sign * Math.cos(sampledTime));
 	
+		var top = $(window).scrollTop();
+		$(window).scrollTop(top + newSpeed * BODY_HEIGHT); 
+		
+		// console.log(sign * newSpeed * BODY_HEIGHT);
+	
+		setTimeout(
+			function() {
+				decelerateScroll(currentDecelerationTime + UPDATE_INTERVAL, newSpeed);
+			},
+			UPDATE_INTERVAL
+		);
+	}
+}
+
+function performEndScrollGesture(gesture) {
+	var points = getLastYCoordinates(40, gesture);
+	var pointsCount = points.length;
+	
+	if (pointsCount >= 2) {
+		var firstPointY = points[0];
+		var lastPointY = points[pointsCount - 1];
+		
+		var speed = (lastPointY- firstPointY) / (pointsCount - 1);
+		console.log(speed);
+		decelerateScroll(0, speed);
+	}
+	else {
+		console.log("END SCROLL ABORTED");
+	}
 }
 
 function analyseEndedGesture(gesture) {
@@ -123,9 +160,14 @@ function analyseEndedGesture(gesture) {
 	var x = averagePoint[0];
 	var y = averagePoint[1];
 	
-	if (isTapGesture(gestureDuration, gesture)) {
-		performTapGesture(x, y);
-		gesture.activeGestures.GESTURE_TAP = true;
+	if (gesture.activeGestures.GESTURE_SCROLL) {
+		performEndScrollGesture(gesture);
+	}
+	else {
+		if (isTapGesture(gestureDuration, gesture)) {
+			performTapGesture(x, y);
+			gesture.activeGestures.GESTURE_TAP = true;
+		}
 	}
 }
 
@@ -180,7 +222,7 @@ function update() {
 			var x = gesture.x;
 			var y = gesture.y;
 			// console.log(x, ', ', y);
-			console.log(y);
+			// console.log(y);
 			
 			// Gesture unique ID
 			var sid = gesture.sid
@@ -191,7 +233,7 @@ function update() {
 			
 			// Stores the newly detected finger in the Gestures global repository
 			if (!gestures[sid]) {
-				gestures[gesture.sid] = {
+				gestures[sid] = {
 					'object' : gesture,
 					'date' : new Date(),
 					'lastPositionSeen' : gesture.path[gesture.path.length - 1],
@@ -256,5 +298,5 @@ $(document).ready(function() {
 	
 	
 	tuio.start();
-	timer = setInterval(update, 15);
+	timer = setInterval(update, UPDATE_INTERVAL);
 });
