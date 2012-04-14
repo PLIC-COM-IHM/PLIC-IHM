@@ -1,0 +1,27 @@
+{
+    "project" :
+    {
+        "name" : "PLIC COM-IHM", 
+        "year" : 2012,     
+        "short_description" : "Lorem ipsum",     
+        "description" : "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+        "members" : [
+            {
+               "firstname" : "John",        
+               "lastname" : "Black",        
+               "login" : "black_j",        
+               "picture" : null // Relatif au dossier medias/membres
+           }
+        ]
+        "technologies" : [
+            {
+                "name" : "HTML5",
+                "logo" : "html5.png", // Relatif au dossier medias/technologies }
+            },
+        ]
+        "categories" : [ "Tactile", "Application web" ]
+        "module" : "PLIC"
+        "logo" : null , // Relatif au dossier medias/images }
+        "header" : null , // Relatif au dossier medias/images }
+    }
+}
