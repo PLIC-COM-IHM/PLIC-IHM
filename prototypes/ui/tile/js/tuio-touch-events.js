@@ -1,10 +1,11 @@
 // 
 var TAP_DURATION = 250;
 var TAP_HOLD_DURATION = 4 * TAP_DURATION;
-var SCROLL_MIN_DELTA = 0;
+var SCROLL_MIN_DELTA = 1;
 var SCROLL_ACCELERATION_POINTS_TO_WATCH = 15;
 var SCROLL_ACCELERATION_MIN_STD_DEVIATION = 0.03;
 
+var IS_PERFORMING_DECELERATION = false;
 var SCROLL_DECELERATION_TIME = 1000;
 
 var UPDATE_INTERVAL = 20;
@@ -113,7 +114,7 @@ function performScrollGesture(gesture) {
 }
 
 function decelerateScroll(currentDecelerationTime, speed) {
-	if (currentDecelerationTime < SCROLL_DECELERATION_TIME) {
+	if (IS_PERFORMING_DECELERATION && currentDecelerationTime < SCROLL_DECELERATION_TIME) {
 		var sampledTime = ((Math.PI / 2) / SCROLL_DECELERATION_TIME) * currentDecelerationTime;
 		var sign = (speed > 0) ? 1 : -1;
 		var newSpeed = Math.cos(sampledTime) * speed;
@@ -132,6 +133,8 @@ function decelerateScroll(currentDecelerationTime, speed) {
 			UPDATE_INTERVAL
 		);
 	}
+	else
+		IS_PERFORMING_DECELERATION = false;
 }
 
 function performEndScrollGesture(gesture) {
@@ -144,7 +147,16 @@ function performEndScrollGesture(gesture) {
 		
 		var speed = (lastPointY- firstPointY) / (pointsCount - 1);
 		console.log(speed);
-		decelerateScroll(0, speed);
+		
+		IS_PERFORMING_DECELERATION = true;
+		
+		var standardDeviation = getStandardDeviation(points);
+		
+		var coeff = 1;
+		if (standardDeviation >= SCROLL_ACCELERATION_MIN_STD_DEVIATION) {
+			var coeff = (1 / SCROLL_ACCELERATION_MIN_STD_DEVIATION) * standardDeviation;
+		}
+		decelerateScroll(0, coeff * speed);
 	}
 	else {
 		console.log("END SCROLL ABORTED");
@@ -243,6 +255,8 @@ function update() {
 						GESTURE_SCROLL : false
 					}
 				};
+				if (IS_PERFORMING_DECELERATION)
+					IS_PERFORMING_DECELERATION = false;
 			}
 			// The object has alreaady been detected
 			else {
