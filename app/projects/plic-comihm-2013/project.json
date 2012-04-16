@@ -1,27 +1,31 @@
 {
-    "project" :
-    {
-        "name" : "PLIC COM-IHM", 
-        "year" : 2012,     
-        "short_description" : "Lorem ipsum",     
-        "description" : "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-        "members" : [
-            {
-               "firstname" : "John",        
-               "lastname" : "Black",        
-               "login" : "black_j",        
-               "picture" : null // Relatif au dossier medias/membres
-           }
-        ]
-        "technologies" : [
-            {
-                "name" : "HTML5",
-                "logo" : "html5.png", // Relatif au dossier medias/technologies }
-            },
-        ]
-        "categories" : [ "Tactile", "Application web" ]
-        "module" : "PLIC"
-        "logo" : null , // Relatif au dossier medias/images }
-        "header" : null , // Relatif au dossier medias/images }
-    }
+    "name" : "PLIC COM-IHM",
+    "year" : 2013,
+    "short_description" : "Lorem ipsum",
+    "description" : "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+    "members" : [
+        {
+            "firsname" : "Jean-Christophe",
+            "lastname" : "Lanoë",
+            "login" : "lanoe_j",
+            "picture" : null
+       },
+        {
+            "firsname" : "Benjamin",
+            "lastname" : "Levoir",
+            "login" : "levoir_b",
+            "picture" : null
+       },
+        {
+            "firsname" : "Vincent",
+            "lastname" : "Oliveira",
+            "login" : "olivei_v",
+            "picture" : null
+       }
+    ],
+    "technologies" : [ "html5", "JavaScript" ],
+    "categories" : [ "Tactile", "Application web" ],
+    "module" : "PLIC",
+    "logoPath" : null,
+    "headerPath" : null
 }

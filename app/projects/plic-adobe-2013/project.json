@@ -1,27 +1,25 @@
 {
-    "project" :
-    {
-        "name" : "PLIC COM-IHM", 
-        "year" : 2012,     
-        "short_description" : "Lorem ipsum",     
-        "description" : "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-        "members" : [
-            {
-               "firstname" : "John",        
-               "lastname" : "Black",        
-               "login" : "black_j",        
-               "picture" : null // Relatif au dossier medias/membres
-           }
-        ]
-        "technologies" : [
-            {
-                "name" : "HTML5",
-                "logo" : "html5.png", // Relatif au dossier medias/technologies }
-            },
-        ]
-        "categories" : [ "Tactile", "Application web" ]
-        "module" : "PLIC"
-        "logo" : null , // Relatif au dossier medias/images }
-        "header" : null , // Relatif au dossier medias/images }
-    }
+    "name" : "PLIC ADOBE",
+    "year" : 2013,
+    "short_description" : "Lorem ipsum",
+    "description" : "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+    "members" : [
+        {
+            "firsname" : "Thibaud",
+            "lastname" : "Friedrich",
+            "login" : "friedr_t",
+            "picture" : null
+       },
+        {
+            "firsname" : "Antoine",
+            "lastname" : "Fournier",
+            "login" : "fourni_f",
+            "picture" : null
+       }
+    ],
+    "technologies" : [ "Flash" ],
+    "categories" : [ "Application" ],
+    "module" : "PLIC",
+    "logoPath" : null,
+    "headerPath" : null
 }
