@@ -5,5 +5,6 @@ $(document).ready(function() {
         $('#debug').append("init()<br/>");
     }
     
+    databaseInit();
     parseProjects();
 });
