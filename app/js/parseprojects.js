@@ -74,6 +74,9 @@ function parseProjectFolder(folder) {
         console.debug('project: ' + data.name);
         console.debug('project-images: ' + data.images);
         console.debug('project-videos: ' + data.videos);
+        
+        // add to database
+        mtiapp.webdb.addProject(data);
     });
 }
 
