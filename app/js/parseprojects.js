@@ -10,35 +10,8 @@ function parseProjects() {
 }
 
 // Parse 'projects' folder
-function parseProjectsHtml(data) {
-    //console.debug('parseProjectHtml(' + data + ')');
-    
-    var results = new Array(), intd = false;
-    HTMLParser(data, {
-        start: function(tag, attrs, unary) {
-            if (tag == "td") {
-                intd = true;
-            } else if (intd && tag == "a") {
-                // find href attributes in <a>
-                for (var i = 0; i < attrs.length; i++) {
-                    if (attrs[i].name == "href") {
-                        results.push(attrs[i].value);
-                    }
-                }
-            }
-        },
-        
-        end: function(tag) {
-            if (tag == "td") {
-                intd = false;
-            }
-        }
-    });
-    
-    // remove back link
-    results.shift();
-    
-    console.debug(results.length + ' result(s) found');
+function parseProjectsHtml(htmldata) {
+    var results = parseFolder(htmldata);
     
     for (var i = 0; i < results.length; i++) {
         parseProjectFolder('projects/' + results[i]);
@@ -48,16 +21,13 @@ function parseProjectsHtml(data) {
 // parse a project folder and put extracted data in database 
 function parseProjectFolder(folder) {
     var json = folder + 'project.json'
-    //console.debug('parseProjectFolder(' + json + ')');
     
     $.getJSON(json, function(data) {
         // get images
         $.ajax({ 
             type: "GET", 
             url: folder + "media/images/",
-            success: function (media) {
-                data.images = parseMediaFolder(media);
-            },
+            success: function (media) { data.images = parseFolder(media); },
             async: false
         });
         
@@ -65,15 +35,11 @@ function parseProjectFolder(folder) {
         $.ajax({ 
             type: "GET", 
             url: folder + "media/videos/",
-            success: function (media) {
-                data.videos = parseMediaFolder(media);
-            },
+            success: function (media) { data.videos = parseFolder(media); },
             async: false
         });
         
-        console.debug('project: ' + data.name);
-        console.debug('project-images: ' + data.images);
-        console.debug('project-videos: ' + data.videos);
+        console.debug(JSON.stringify(data));
         
         // add to database
         mtiapp.webdb.addProject(data);
@@ -81,36 +47,36 @@ function parseProjectFolder(folder) {
 }
 
 
-// Parse media folder. Return an array
-function parseMediaFolder(media) {
-    //console.debug('parseMediaFolder(' + media + ')');
+// Parse folder. Return an array which contains all elements (like ls)
+function parseFolder(htmldata) {
+    var results = new Array();
     
-    var results = new Array(), intd = false;
-    HTMLParser(media, {
-        start: function(tag, attrs, unary) {
-            if (tag == "td") {
-                intd = true;
-            } else if (intd && tag == "a") {
-                // find href attributes in <a>
-                for (var i = 0; i < attrs.length; i++) {
-                    if (attrs[i].name == "href") {
-                        results.push(attrs[i].value);
-                    }
-                }
-            }
-        },
-        
-        end: function(tag) {
-            if (tag == "td") {
-                intd = false;
+    // parse html string
+    while (htmldata != "") {
+        // search '<script>addRow("'
+        var pos = htmldata.indexOf('<script>addRow("');
+        if (pos < 0) {
+            htmldata = ""
+        } else {
+            pos += 16; // remove '<script>addRow("'
+            htmldata = htmldata.substring(pos);
+            
+            // search '","'
+            pos = htmldata.indexOf('","');
+            if (pos > 0) {
+                var value = htmldata.substring(0, pos);
+                
+                // add it
+                results.push(value);
+            } else {
+                htmldata = "";
             }
         }
-    });
+    }
     
-    // remove back link
     results.shift();
     
-    console.debug(results.length + ' media found');
+    console.debug('Folder contains: ' + results);
 
     return results; 
 }

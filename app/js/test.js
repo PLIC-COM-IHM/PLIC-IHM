@@ -1,11 +1,24 @@
+function testParseFolder(folder) {
+    console.debug("Testing parse folder...");
+    $('#test').append('<h3>Testing parseFolder...</h3>');
+    $.ajax({ 
+        type: "GET", 
+        url: folder,
+        success: function (htmldata) {
+            var results = parseFolder(htmldata);
+            $('#test').append('Folder contains:<em> ' + results + '</em><br/>');
+        }
+    });
+}
+
 function testAddProject() {
     console.debug("Testing add project...");
-    $('#test').append('<h3>Testing add project...</h3><ul div="test1"></ul>');
+    $('#test').append('<h3>Testing add project...</h3>');
     $.getJSON("test/project.json", function(data) {
         mtiapp.webdb.addProject(data);
         $('html').bind('db_project_add', function () {
             console.debug("Project added...");
-            $('#test').append('<em><b>Added:</b> ' + JSON.stringify(data) + '</em><br/>');
+            $('#test').append('Added:<em> ' + JSON.stringify(data) + '</em><br/>');
             
             // get project
             var db = mtiapp.webdb.db;
@@ -14,7 +27,7 @@ function testAddProject() {
                     [],
                     function(tx, rs) {
                         for (i=0; i<rs.rows.length;i++) {
-                            $('#test').append('<em><b>Got:</b> ' + JSON.stringify(rs.rows.item(i)) + '</em><br/>');
+                            $('#test').append('Got:<em> ' + JSON.stringify(rs.rows.item(i)) + '</em><br/>');
                         }
                     },
                     function(tx, e) {
@@ -41,6 +54,8 @@ function testAddProject() {
 }
 
 $(document).ready(function() {
+    testParseFolder('projects/');
+
     databaseInit();
     $('html').bind('db_initialized', function () {
         testAddProject();
