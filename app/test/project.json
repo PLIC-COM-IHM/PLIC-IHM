@@ -1,27 +1,33 @@
 {
-    "name" : "Projet test",
+    "name" : "Application tactile MTI",
     "year" : 2013,
-    "short_description" : "Lorem ipsum",
-    "description" : "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+    "short_description" : "Ceci est une courte description.",
+    "description" : "Ceci est une très très très longue description. Sisi, je vous assure",
     "members" : [
         {
-            "firsname" : "Member 1",
-            "lastname" : "A",
-            "login" : "aze1",
-            "picture" : "aze.png"
+            "firsname" : "Vincent",
+            "lastname" : "Oliveira",
+            "login" : "olivei_v",
+            "picture" : null
        },
         {
-            "firsname" : "Member 2",
-            "lastname" : "qsd",
-            "login" : "qsd2",
-            "picture" : "qsd.png"
+            "firsname" : "Benjamin",
+            "lastname" : "Levoir",
+            "login" : "levoir_b",
+            "picture" : null
+       },
+       {
+            "firsname" : "JC",
+            "lastname" : "Lanoë",
+            "login" : "lanoe_j",
+            "picture" : null
        }
     ],
-    "technologies" : [ "tech1", "tech2" ],
-    "categories" : [ "cat1", "cat2" ],
-    "module" : "module1",
-    "logoPath" : "logoPath",
-    "headerPath" : "HeaderPath",
+    "technologies" : [ "html5", "JavaScript" ],
+    "categories" : [ "Application", "Communication" ],
+    "module" : "PLIC",
+    "logoPath" : "logo.png",
+    "headerPath" : "header.png",
     "images" : [ "img1", "img2" ],
     "videos" : [ "video1", "video2" ]
 }

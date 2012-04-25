@@ -1,0 +1,27 @@
+{
+    "name" : "Projet test 2",
+    "year" : 2012,
+    "short_description" : "Lorem ipsum",
+    "description" : "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+    "members" : [
+        {
+            "firsname" : "Member 1",
+            "lastname" : "A",
+            "login" : "aze1",
+            "picture" : "aze.png"
+       },
+        {
+            "firsname" : "Member 2",
+            "lastname" : "qsd",
+            "login" : "qsd2",
+            "picture" : "qsd.png"
+       }
+    ],
+    "technologies" : [ "tech1", "tech2" ],
+    "categories" : [ "cat1", "cat2" ],
+    "module" : "mod1",
+    "logoPath" : "logoPath.png",
+    "headerPath" : "HeaderPath.png",
+    "images" : [ "img21", "img22" ],
+    "videos" : [ "video21", "video22" ]
+}

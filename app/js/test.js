@@ -1,56 +1,35 @@
+var _projects = new Array();
+
+// TESTING : parseproject.ParseProject(htmldata)
 function testParseFolder(folder) {
     console.debug("Testing parse folder...");
-    $('#test').append('<h3>Testing parseFolder...</h3>');
+    $('#test1').append('<h3>Testing parseFolder...</h3>');
     $.ajax({ 
         type: "GET", 
         url: folder,
         success: function (htmldata) {
             var results = parseFolder(htmldata);
-            $('#test').append('Folder contains:<em> ' + results + '</em><br/>');
+            $('#test1').append('Folder contains:<em> ' + results + '</em><br/>');
         }
     });
 }
 
+// TESTING : database.addProject(project)
 function testAddProject() {
     console.debug("Testing add project...");
-    $('#test').append('<h3>Testing add project...</h3>');
-    $.getJSON("test/project.json", function(data) {
-        mtiapp.webdb.addProject(data);
-        $('html').bind('db_project_add', function () {
-            console.debug("Project added...");
-            $('#test').append('Added:<em> ' + JSON.stringify(data) + '</em><br/>');
-            
-            // get project
-            var db = mtiapp.webdb.db;
-            db.transaction(function(tx) {
-                tx.executeSql("SELECT * FROM project",
-                    [],
-                    function(tx, rs) {
-                        for (i=0; i<rs.rows.length;i++) {
-                            $('#test').append('Got:<em> ' + JSON.stringify(rs.rows.item(i)) + '</em><br/>');
-                        }
-                    },
-                    function(tx, e) {
-                        alert("There has been an error: " + e.message);
-                    });
-            });
-        });
+    
+    // Add project.json
+    $.getJSON("test/project.json", function(project) {
+        mtiapp.webdb.addProject(project);
+        //$('#test').append('<h4>Adding</h4><p>Added:<em> ' + JSON.stringify(project) + '</em></p>');
     });
-    /*
-    var db = mtiapp.webdb.db;
-    db.transaction(function(tx) {
-        tx.executeSql("SELECT * FROM projects",
-            [],
-            function(tx, rs) {
-                for (i=0; i<rs.rows.length;i++) {
-                    $('body').append('<p>Test</p>');
-                }
-            },
-            function(tx, e) {
-                alert("There has been an error: " + e.message);
-            });
-    }
-    */
+    
+    
+    // Add project2.json
+    $.getJSON("test/project2.json", function(project) {
+        mtiapp.webdb.addProject(project);
+        //$('#test').append('<h4>Adding</h4><p>Added:<em> ' + JSON.stringify(project) + '</em></p>');
+    });
 }
 
 $(document).ready(function() {
@@ -61,3 +40,18 @@ $(document).ready(function() {
         testAddProject();
     });
 });
+
+window.setInterval(function(){
+    console.debug('Refreshing...');
+    // get project
+    databaseGetAllProjects(function(projects) {
+        _projects = projects;
+    });
+    
+    $('#test2').empty();
+    $('#test2').append('<h3>Testing add project...</h3>');
+    $('#test2').append('<h4>Getting</h4>');
+    for (i=0; i<_projects.length;i++) {
+        $('#test2').append('<p>Got:<em> ' + JSON.stringify(_projects[i]) + '</em></p>');
+    }
+}, 2000);
