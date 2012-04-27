@@ -14,7 +14,7 @@ function parseProjectsHtml(htmldata) {
     var results = parseFolder(htmldata);
     
     for (var i = 0; i < results.length; i++) {
-        parseProjectFolder('projects/' + results[i]);
+        parseProjectFolder('projects/' + results[i] + '/');
     }
 }
 
@@ -27,22 +27,23 @@ function parseProjectFolder(folder) {
         $.ajax({ 
             type: "GET", 
             url: folder + "media/images/",
-            success: function (media) { data.images = parseFolder(media); },
-            async: false
+            success: function (media) {
+                data.images = parseFolder(media);
+        
+                // get videos
+                $.ajax({ 
+                    type: "GET", 
+                    url: folder + "media/videos/",
+                    success: function (media) {
+                        data.videos = parseFolder(media);
+                        
+                        // add to database
+                        console.debug(JSON.stringify(data));
+                        mtiapp.webdb.addProject(data);
+                    }
+                });
+            }
         });
-        
-        // get videos
-        $.ajax({ 
-            type: "GET", 
-            url: folder + "media/videos/",
-            success: function (media) { data.videos = parseFolder(media); },
-            async: false
-        });
-        
-        console.debug(JSON.stringify(data));
-        
-        // add to database
-        mtiapp.webdb.addProject(data);
     });
 }
 

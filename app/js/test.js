@@ -37,7 +37,8 @@ $(document).ready(function() {
 
     databaseInit();
     $('html').bind('db_initialized', function () {
-        testAddProject();
+        //testAddProject();
+        parseProjects();
     });
 });
 
