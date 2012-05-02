@@ -1,0 +1,13 @@
+/* Header */
+#header {font-size:2em;}
+h1 { float:left; }
+#buttonbar { float:right; }
+#buttonbar li { list-style:none; display:inline; padding:0; margin:0;}
+
+/* Navbar */
+#navbar {}
+#previouspage { float:left; }
+#nextpage { float:right;}
+
+.clear { clear: both; }
+.loading { }
