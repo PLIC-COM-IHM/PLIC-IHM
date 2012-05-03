@@ -289,14 +289,14 @@ mtiapp.webdb.addProjectCategory = function(categoryId, projectId) {
 
 
 // Initialise database
-function databaseInit() {
+function dbInit() {
   mtiapp.webdb.open();
   mtiapp.webdb.init();
 }
 
 // get all projects
 // onSuccessCallback(Array : projects)
-function databaseGetAllProjects(onSuccessCallback) {
+function dbGetAllProjects(onSuccessCallback) {
     // get project
     var db = mtiapp.webdb.db;
     db.transaction(function(tx) {
@@ -398,4 +398,55 @@ function addToProjectList(projectList, project) {
     projectList.push(project);
     
     return projectList;
+}
+
+
+
+// get all categories
+// onSuccessCallback(Array : projects)
+function dbGetAllCategories(onSuccessCallback) {
+    // get project
+    var db = mtiapp.webdb.db;
+    db.transaction(function(tx) {
+        // creating query with all join
+        var q = "SELECT * FROM category";
+        tx.executeSql(q, [],
+            function(tx, rs) {
+                console.debug('Getting all categories...');
+                var results = new Array();
+                for (i=0; i<rs.rows.length; i++) {
+                    results.push(rs.rows.item(i));
+                }
+                
+                onSuccessCallback(results);
+            },
+            function(tx, e) {
+                alert("There has been an error: " + e.message);
+            });
+    });
+}
+
+
+// get all technologies
+// onSuccessCallback(Array : projects)
+function dbGetAllTechnologies(onSuccessCallback) {
+    // get project
+    var db = mtiapp.webdb.db;
+    db.transaction(function(tx) {
+        // creating query with all join
+        var q = "SELECT * FROM technology";
+        tx.executeSql(q, [],
+            function(tx, rs) {
+                console.debug('Getting all technologies...');
+                var results = new Array();
+                for (i=0; i<rs.rows.length; i++) {
+                    results.push(rs.rows.item(i));
+                }
+                
+                onSuccessCallback(results);
+            },
+            function(tx, e) {
+                alert("There has been an error: " + e.message);
+            });
+    });
 }

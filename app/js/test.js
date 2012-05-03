@@ -35,7 +35,7 @@ function testAddProject() {
 $(document).ready(function() {
     testParseFolder('projects/');
 
-    databaseInit();
+    db();
     $('html').bind('db_initialized', function () {
         //testAddProject();
         parseProjects();
@@ -45,7 +45,7 @@ $(document).ready(function() {
 window.setInterval(function(){
     console.debug('Refreshing...');
     // get project
-    databaseGetAllProjects(function(projects) {
+    dbGetAllProjects(function(projects) {
         _projects = projects;
     });
     

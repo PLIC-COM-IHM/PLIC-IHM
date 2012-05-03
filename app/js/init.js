@@ -1,10 +1,13 @@
-function showLoading(where) {
-    $(where).empty()
+function showLoading() {
+    $("#content").empty()
     .append('<img class"loading" src="images/loading.gif" alt="Loading..."/>');
 }
 
 $(document).ready(function() {
-    showLoading("#content");
-    databaseInit();
-    parseProjects();
+    showLoading();
+    dbInit();
+    $('html').bind('db_initialized', function () {
+        parseProjects();
+        homepage();
+    });
 });
