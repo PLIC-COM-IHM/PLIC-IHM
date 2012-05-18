@@ -28,3 +28,25 @@ function hpInstantiateTechnologies(technologies) {
     
     //dbGetAllTechnologies(hpInstantiateCategorie);
 }
+
+function hpInstantiateImages(images) {
+    console.debug('Instanciate home page images');
+    $("#content").append('<div id="imagestilelist" class="tilelist"><h3>Technologies</h3></div>');
+    
+    for (i=0; i<images.length; i++) {
+        $("#imagestilelist").append(technologies[i].technoName);
+    }
+    
+    //dbGetAllTechnologies(hpInstantiateCategorie);
+}
+
+function hpInstantiateVideos(technologies) {
+    console.debug('Instanciate home page videos');
+    $("#content").append('<div id="videostilelist" class="tilelist"><h3>Technologies</h3></div>');
+    
+    for (i=0; i<technologies.length; i++) {
+        $("#videostilelist").append(technologies[i].technoName);
+    }
+    
+    //dbGetAllTechnologies(hpInstantiateCategorie);
+}
