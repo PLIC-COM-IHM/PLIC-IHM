@@ -9,44 +9,40 @@ function hpInstantiateCategorie(categories) {
 
     console.debug('Instanciate home page categories');
     $("#content").empty()
-    .append('<div id="categorytilelist" class="tilelist"><h3>Categories</h3></div>');
+    .append('<div class="tilelist"><h3>Categories</h3><ul id="categorytilelist"></ul></div>');
     
     for (i=0; i<categories.length; i++) {
-        $("#categorytilelist").append(categories[i].categoryName);
+        $("#categorytilelist").append("<li>" + categories[i].categoryName + "</li>");
     }
     
+    // Get technologies, images and videos
     dbGetAllTechnologies(hpInstantiateTechnologies);
 }
 
 function hpInstantiateTechnologies(technologies) {
     console.debug('Instanciate home page categories');
-    $("#content").append('<div id="technologiestilelist" class="tilelist"><h3>Technologies</h3></div>');
+    $("#content").append('<div class="tilelist"><h3>Technologies</h3><ul id="technologiestilelist" ></ul></div>');
     
     for (i=0; i<technologies.length; i++) {
-        $("#technologiestilelist").append(technologies[i].technoName);
+        $('#technologiestilelist').append("<li><img src=\"data/technologies/" + technologies[i].technoName + ".png\" alt=\"\" /></li>");
     }
-    
-    //dbGetAllTechnologies(hpInstantiateCategorie);
 }
 
 function hpInstantiateImages(images) {
     console.debug('Instanciate home page images');
-    $("#content").append('<div id="imagestilelist" class="tilelist"><h3>Technologies</h3></div>');
+    $("#content").append('<div class="tilelist"><h3>Images</h3><ul id="imagestilelist"></ul></div>');
     
     for (i=0; i<images.length; i++) {
-        $("#imagestilelist").append(technologies[i].technoName);
+        $("#imagestilelist").append("<li>" + technologies[i].technoName + "</li>");
     }
-    
-    //dbGetAllTechnologies(hpInstantiateCategorie);
 }
 
 function hpInstantiateVideos(technologies) {
     console.debug('Instanciate home page videos');
-    $("#content").append('<div id="videostilelist" class="tilelist"><h3>Technologies</h3></div>');
+    $("#content").append('<div class="tilelist"><h3>Videos</h3><ul id="videostilelist"></ul></div>');
     
     for (i=0; i<technologies.length; i++) {
-        $("#videostilelist").append(technologies[i].technoName);
+        $("#videostilelist").append("<li>" + technologies[i].technoName + "</li>");
     }
     
-    //dbGetAllTechnologies(hpInstantiateCategorie);
 }

@@ -1,0 +1,105 @@
+#top
+{
+	width : 100%;
+	height : 30%;
+	margin : auto;
+}
+
+#champ
+{
+	width : 80%;
+	height : 50px;
+	margin: auto;
+	margin-top : 60px;;
+	margin-left : 10%;
+	padding : 10px;
+	font-size : 20px;
+
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#keyzone
+{
+	width: 100%;
+	margin : auto;
+	margin-top : 50px;
+	text-align :center;
+	font-size : 30px;
+
+}
+.clear
+{
+	clear :left;
+}
+.key
+{
+	float : left;
+	border: 1px solid black;
+	padding : 10px;
+	width : 50px;
+	height : 50px;
+	margin : 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+
+}
+.enterkey
+{
+	float : left;
+	border: 1px solid black;
+	padding : 10px;
+	width : 150px;
+	height : 50px;
+	margin : 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;		
+}
+.spacekey
+{
+	float : left;
+	border: 1px solid black;
+	padding : 10px;
+	width : 400px;
+	height : 50px;
+	margin : 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;		
+}
+.remkey
+{
+	float : left;
+	border: 1px solid black;
+	padding : 10px;
+	width : 100px;
+	height : 50px;
+	margin : 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;	
+}
+
+#first
+{
+	margin-left : 15%;
+}
+#second
+{
+	margin-left : 32px;;
+}
+#third
+{
+	margin-left : 32px;;
+}
+#fourth
+{
+	margin-left : 100px;;
+}
+#fifth
+{
+	margin-left : 100px;;
+}

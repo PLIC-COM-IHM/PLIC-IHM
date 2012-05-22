@@ -18,6 +18,7 @@ function testParseFolder(folder) {
 function testAddProject() {
     console.debug("Testing add project...");
     
+    /*
     // Add project.json
     $.getJSON("test/project.json", function(project) {
         mtiapp.webdb.addProject(project);
@@ -30,14 +31,15 @@ function testAddProject() {
         mtiapp.webdb.addProject(project);
         //$('#test').append('<h4>Adding</h4><p>Added:<em> ' + JSON.stringify(project) + '</em></p>');
     });
+    */
 }
 
 $(document).ready(function() {
     testParseFolder('projects/');
 
-    db();
+    dbInit();
     $('html').bind('db_initialized', function () {
-        //testAddProject();
+        testAddProject();
         parseProjects();
     });
 });
