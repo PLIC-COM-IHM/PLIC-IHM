@@ -5,20 +5,20 @@
     "description" : "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
     "members" : [
         {
-            "firsname" : "Thibaud",
+            "firstname" : "Thibaud",
             "lastname" : "Friedrich",
             "login" : "friedr_t",
             "picture" : null
        },
         {
-            "firsname" : "Antoine",
+            "firstname" : "Antoine",
             "lastname" : "Fournier",
             "login" : "fourni_f",
             "picture" : null
        }
     ],
     "technologies" : [ "flash" ],
-    "categories" : [ "Application" ],
+    "categories" : [ "Application mobile" ],
     "module" : "PLIC",
     "logoPath" : null,
     "headerPath" : null

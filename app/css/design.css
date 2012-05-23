@@ -13,5 +13,5 @@ h1 { font-size:2em; float:left; }
 .loading { }
 
 /* Tile */
-.categorytilelist {  }
+.tilelist { width: 50%; float: left;}
 .categorytilelist h3 { font-size:1.5em; }
