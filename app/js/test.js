@@ -14,32 +14,11 @@ function testParseFolder(folder) {
     });
 }
 
-// TESTING : database.addProject(project)
-function testAddProject() {
-    console.debug("Testing add project...");
-    
-    /*
-    // Add project.json
-    $.getJSON("test/project.json", function(project) {
-        mtiapp.webdb.addProject(project);
-        //$('#test').append('<h4>Adding</h4><p>Added:<em> ' + JSON.stringify(project) + '</em></p>');
-    });
-    
-    
-    // Add project2.json
-    $.getJSON("test/project2.json", function(project) {
-        mtiapp.webdb.addProject(project);
-        //$('#test').append('<h4>Adding</h4><p>Added:<em> ' + JSON.stringify(project) + '</em></p>');
-    });
-    */
-}
-
 $(document).ready(function() {
     testParseFolder('projects/');
 
     dbInit();
     $('html').bind('db_initialized', function () {
-        testAddProject();
         parseProjects();
     });
 });

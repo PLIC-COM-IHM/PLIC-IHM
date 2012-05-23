@@ -5,19 +5,19 @@
     "description" : "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
     "members" : [
         {
-            "firsname" : "Jean-Christophe",
+            "firstname" : "Jean-Christophe",
             "lastname" : "Lanoë",
             "login" : "lanoe_j",
             "picture" : null
        },
         {
-            "firsname" : "Benjamin",
+            "firstname" : "Benjamin",
             "lastname" : "Levoir",
             "login" : "levoir_b",
             "picture" : null
        },
         {
-            "firsname" : "Vincent",
+            "firstname" : "Vincent",
             "lastname" : "Oliveira",
             "login" : "olivei_v",
             "picture" : null
