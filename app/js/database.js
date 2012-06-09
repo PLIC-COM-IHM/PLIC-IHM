@@ -66,7 +66,7 @@ mtiapp.webdb.init = function() {
             function(tx, e) { alert("There has been an error: " + e.message); });
     
         q = "CREATE TABLE IF NOT EXISTS " +
-                "technology(technoId INTEGER PRIMARY KEY, technoName TEXT, logoPath TEXT)";
+                "technology(technoId INTEGER PRIMARY KEY, name TEXT, logoPath TEXT)";
         tx.executeSql(q, [],
             function(tx, e) { console.debug('Created technology table'); },
             function(tx, e) { alert("There has been an error: " + e.message); });
@@ -78,7 +78,7 @@ mtiapp.webdb.init = function() {
             function(tx, e) { alert("There has been an error: " + e.message); });
     
         q = "CREATE TABLE IF NOT EXISTS " +
-                "category(categoryId INTEGER PRIMARY KEY, categoryName TEXT)";
+                "category(categoryId INTEGER PRIMARY KEY, name TEXT)";
         tx.executeSql(q, [],
             function(tx, e) { console.debug('Created category table'); },
             function(tx, e) { alert("There has been an error: " + e.message); });
@@ -200,15 +200,15 @@ mtiapp.webdb.addTechnology = function(technology, projectId) {
     console.debug("AddTechnology(" + technology + ", " + projectId + ")");
     var db = mtiapp.webdb.db;
     db.transaction(function(tx) {
-        tx.executeSql("SELECT * FROM technology WHERE technoName = ?",
+        tx.executeSql("SELECT * FROM technology WHERE name = ?",
             [technology],
             function(tx, rs) {
                 if (rs.rows.length > 0) {
                     // Found, add it
-                    mtiapp.webdb.addProjectTechnology(rs.rows.item(0).id, projectId);
+                    mtiapp.webdb.addProjectTechnology(rs.rows.item(0).technoId, projectId);
                 } else {
                     // Does not exist, create it
-                    tx.executeSql("INSERT INTO technology(technoName) VALUES(?)",
+                    tx.executeSql("INSERT INTO technology(name) VALUES(?)",
                         [technology],
                         function(tx, r) {
                             // created, now add it
@@ -246,16 +246,16 @@ mtiapp.webdb.addCategory = function(category, projectId) {
     console.debug("AddCategory(" + category + ", " + projectId + ")");
     var db = mtiapp.webdb.db;
     db.transaction(function(tx) {
-        tx.executeSql("SELECT * FROM category WHERE categoryName = ?",
+        tx.executeSql("SELECT * FROM category WHERE name = ?",
             [category],
             function(tx, rs) {
                 if (rs.rows.length > 0) {
                     // Found, add it
-                    mtiapp.webdb.addProjectCategory(rs.rows.item(0).id, projectId);
+                    mtiapp.webdb.addProjectCategory(rs.rows.item(0).categoryId, projectId);
                 }
                 else {
                     // Does not exist, add it
-                    tx.executeSql("INSERT INTO category(categoryName) VALUES(?)",
+                    tx.executeSql("INSERT INTO category(name) VALUES(?)",
                         [category],
                         function(tx, r) {
                             // inserted, add it
@@ -306,8 +306,8 @@ function dbGetAllProjects(onSuccessCallback) {
                 "project.logoPath, project.headerPath, project.module, " +
                 "image.imagePath, video.videoPath, member.firstname, " +
                 "member.lastname, member.login, member.photoPath, " +
-                "projectTechnology.technologyId, technology.technoName, " +
-                "projectCategory.categoryId, category.categoryName ";
+                "projectTechnology.technologyId, technology.name, " +
+                "projectCategory.categoryId, category.name ";
         q += "FROM project ";
         q += "LEFT JOIN image ON project.id = image.projectId ";
         q += "LEFT JOIN video ON project.id = video.projectId ";
@@ -372,18 +372,18 @@ function addToProjectList(projectList, project) {
             
             // adding technology ?
             for (k=0; k<projectList[j].technologies.length; k++) {
-                if (projectList[j].technologies[k] == project.technoName) { break; }
+                if (projectList[j].technologies[k] == project.name) { break; }
             }
             if (k == projectList[j].technologies.length) {
-                projectList[j].technologies.push(project.technoName);
+                projectList[j].technologies.push(project.name);
             }
             
             // adding category ?
             for (k=0; k<projectList[j].categories.length; k++) {
-                if (projectList[j].categories[k] == project.categoryName) { break; }
+                if (projectList[j].categories[k] == project.name) { break; }
             }
             if (k == projectList[j].categories.length) {
-                projectList[j].categories.push(project.categoryName);
+                projectList[j].categories.push(project.name);
             }
             
             return projectList;
@@ -393,8 +393,8 @@ function addToProjectList(projectList, project) {
     project.images = new Array(project.imagePath);
     project.videos = new Array(project.videoPath);
     project.members = new Array(member);
-    project.technologies = new Array(project.technoName);
-    project.categories = new Array(project.categoryName);
+    project.technologies = new Array(project.name);
+    project.categories = new Array(project.name);
     projectList.push(project);
     
     return projectList;
@@ -409,7 +409,10 @@ function dbGetAllCategories(onSuccessCallback) {
     var db = mtiapp.webdb.db;
     db.transaction(function(tx) {
         // creating query with all join
-        var q = "SELECT * FROM category";
+        var q = "SELECT category.categoryId, category.name, count(projectCategory.projectId) as nbProjects " +
+                "FROM category " +
+                "JOIN projectCategory on category.categoryId = projectCategory.categoryId " +
+                "GROUP BY category.name";
         tx.executeSql(q, [],
             function(tx, rs) {
                 console.debug('Getting all categories...');
@@ -434,7 +437,10 @@ function dbGetAllTechnologies(onSuccessCallback) {
     var db = mtiapp.webdb.db;
     db.transaction(function(tx) {
         // creating query with all join
-        var q = "SELECT * FROM technology";
+        var q = "SELECT technology.technoId, technology.name, count(projectTechnology.projectId) as nbProjects " +
+                "FROM technology " +
+                "JOIN projectTechnology ON technology.technoId = projectTechnology.technologyId " +
+                "GROUP BY technology.name";
         tx.executeSql(q, [],
             function(tx, rs) {
                 console.debug('Getting all technologies...');

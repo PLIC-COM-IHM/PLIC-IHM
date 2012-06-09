@@ -1,8 +1,11 @@
+/* reset */
+ul { padding:0; margin:0; }
+li { list-style: none; padding:0; margin:0; }
+
 /* Header */
-#header {}
 h1 { font-size:2em; float:left; }
 #buttonbar { float:right; }
-#buttonbar li { list-style:none; display:inline; padding:0; margin:0;}
+    #buttonbar li { display:inline; }
 
 /* Navbar */
 #navbar {}
@@ -14,4 +17,6 @@ h1 { font-size:2em; float:left; }
 
 /* Tile */
 .tilelist { width: 50%; float: left;}
-.categorytilelist h3 { font-size:1.5em; }
+    .tilelist li { width: 128px; height: 128px; float: left; margin: 0 10px 10px 0; }
+    .tilelist li strong { display: block; text-align: center; }
+    .tilelist li em { visibility:hidden; }
