@@ -12,7 +12,7 @@ mtiapp.webdb.open = function() {
 
 
 // Initialise database (create table)
-mtiapp.webdb.init = function() {
+mtiapp.webdb.reinit = function() {
     console.debug("Initialise database...");
     
     var db = mtiapp.webdb.db;
@@ -291,8 +291,22 @@ mtiapp.webdb.addProjectCategory = function(categoryId, projectId) {
 // Initialise database
 function dbInit() {
   mtiapp.webdb.open();
-  mtiapp.webdb.init();
 }
+
+
+function dbReinit() {
+  mtiapp.webdb.open();
+  mtiapp.webdb.reinit();
+}
+
+
+
+/***
+ *
+ *  GET FUNCTIONS
+ *
+ */
+
 
 // get all projects
 // onSuccessCallback(Array : projects)
@@ -347,43 +361,53 @@ function addToProjectList(projectList, project) {
             var k = 0;
             
             // adding image ?
-            for (k=0; k<projectList[j].images.length; k++) {
-                if (projectList[j].images[k] == project.imagePath) { break; }
-            }
-            if (k == projectList[j].images.length) {
-                projectList[j].images.push(project.imagePath);
+            if (projectList[j].images != null) {
+                for (k=0; k<projectList[j].images.length; k++) {
+                    if (projectList[j].images[k] == project.imagePath) { break; }
+                }
+                if (k == projectList[j].images.length) {
+                    projectList[j].images.push(project.imagePath);
+                }
             }
             
             // adding video ?
-            for (k=0; k<projectList[j].videos.length; k++) {
-                if (projectList[j].videos[k] == project.videoPath) { break; }
-            }
-            if (k == projectList[j].videos.length) {
-                projectList[j].videos.push(project.videoPath);
+            if (projectList[j].videos != null) {
+                for (k=0; k<projectList[j].videos.length; k++) {
+                    if (projectList[j].videos[k] == project.videoPath) { break; }
+                }
+                if (k == projectList[j].videos.length) {
+                    projectList[j].videos.push(project.videoPath);
+                }
             }
             
             // adding member ?
-            for (k=0; k<projectList[j].members.length; k++) {
-                if (projectList[j].members[k].login == member.login) { break; }
-            }
-            if (k == projectList[j].members.length) {
-                projectList[j].members.push(member);
+            if (projectList[j].members != null) {
+                for (k=0; k<projectList[j].members.length; k++) {
+                    if (projectList[j].members[k].login == member.login) { break; }
+                }
+                if (k == projectList[j].members.length) {
+                    projectList[j].members.push(member);
+                }
             }
             
             // adding technology ?
-            for (k=0; k<projectList[j].technologies.length; k++) {
-                if (projectList[j].technologies[k] == project.name) { break; }
-            }
-            if (k == projectList[j].technologies.length) {
-                projectList[j].technologies.push(project.name);
+            if (projectList[j].technologies != null) {
+                for (k=0; k<projectList[j].technologies.length; k++) {
+                    if (projectList[j].technologies[k] == project.name) { break; }
+                }
+                if (k == projectList[j].technologies.length) {
+                    projectList[j].technologies.push(project.name);
+                }
             }
             
             // adding category ?
-            for (k=0; k<projectList[j].categories.length; k++) {
-                if (projectList[j].categories[k] == project.name) { break; }
-            }
-            if (k == projectList[j].categories.length) {
-                projectList[j].categories.push(project.name);
+            if (projectList[j].categories != null) {
+                for (k=0; k<projectList[j].categories.length; k++) {
+                    if (projectList[j].categories[k] == project.name) { break; }
+                }
+                if (k == projectList[j].categories.length) {
+                    projectList[j].categories.push(project.name);
+                }
             }
             
             return projectList;
@@ -447,6 +471,35 @@ function dbGetAllTechnologies(onSuccessCallback) {
                 var results = new Array();
                 for (i=0; i<rs.rows.length; i++) {
                     results.push(rs.rows.item(i));
+                }
+                
+                onSuccessCallback(results);
+            },
+            function(tx, e) {
+                alert("There has been an error: " + e.message);
+            });
+    });
+}
+
+
+// get all data (images & videos)
+// onSuccessCallback(Array : projects)
+function dbGetAllData(onSuccessCallback) {
+    // get project
+    var db = mtiapp.webdb.db;
+    db.transaction(function(tx) {
+        // creating query with all join
+        var q = "SELECT project.id, project.folder, project.name, " +
+                "image.imagePath, video.videoPath " +
+                "FROM project " +
+                "LEFT JOIN image ON project.id = image.projectId " +
+                "LEFT JOIN video ON project.id = video.projectId ";
+        tx.executeSql(q, [],
+            function(tx, rs) {
+                console.debug('Getting all technologies...');
+                var results = new Array();
+                for (i=0; i<rs.rows.length; i++) {
+                    results = addToProjectList(results, rs.rows.item(i));
                 }
                 
                 onSuccessCallback(results);

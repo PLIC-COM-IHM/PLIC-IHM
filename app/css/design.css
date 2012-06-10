@@ -2,21 +2,22 @@
 ul { padding:0; margin:0; }
 li { list-style: none; padding:0; margin:0; }
 
+body { padding: 10px; }
+
 /* Header */
-h1 { font-size:2em; float:left; }
 #buttonbar { float:right; }
     #buttonbar li { display:inline; }
 
 /* Navbar */
-#navbar {}
+#navbar { clear: both; }
 #previouspage { float:left; }
 #nextpage { float:right;}
 
-.clear { clear: both; }
-.loading { }
+/* Content */
+#content { clear: both; }
 
 /* Tile */
 .tilelist { width: 50%; float: left;}
-    .tilelist li { width: 128px; height: 128px; float: left; margin: 0 10px 10px 0; }
-    .tilelist li strong { display: block; text-align: center; }
+    .tilelist li { width: 128px; height: 128px; border: groove 1px black; float: left; margin: 0 10px 10px 0; }
+    .tilelist li strong { display: block; text-align: center; padding: 10px; }
     .tilelist li em { visibility:hidden; }

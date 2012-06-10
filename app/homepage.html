@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MTI</title>
+        <link rel="stylesheet" type="text/css" href="css/design.css">
+        <script language="JavaScript" src="js/jquery.js"></script>
+        <script language="JavaScript" src="js/database.js"></script>
+        <script language="JavaScript" src="js/parseprojects.js"></script>
+        <script language="JavaScript" src="js/homepage.js"></script>
+        <script type="text/javascript" src="js/tuiles.js"></script>
+        <script language="JavaScript" src="js/main.js"></script>
+    </head>
+    <body>
+        <header>
+            <img id="logo" src="images/mti.png" alt="MTI" />
+            <div id="buttonbar">
+                <ul>
+                    <li><img src="images/home.jpg" alt="Home" onclick="javascript:location.href='index.html';" height="67" width="67" /></li>
+                    <li><img src="images/rotate.jpg" alt="Rotate" height="67" width="67" /></li>
+                    <li><img src="images/search.jpg" alt="Search" onclick="javascript:location.href='keyboard.html';" height="67" width="67" /></li>
+                </ul>
+            </div> <!-- Buttonbar -->
+        </header>
+        <div id="navbar">
+            <div id="previouspage">
+                <img id="next" src="images/previouspage.jpg" alt="Previous" onclick="prevTitles()" height="67" width="67" />
+            </div>
+            <div id="nextpage">
+                <img src="images/nextpage.jpg" alt="Next" onclick="nextTitles()" height="67" width="67" />
+            </div>            
+        </div> <!-- Navbar -->
+        <img id="loading" src="images/loading.gif" alt="Loading..."/>
+        <div id="content">
+            <div class="tilelist" id="technologyTileList">
+                <h3>Technologies</h3>
+                <ul id="technologiestilelist"></ul>
+            </div>
+            <div class="tilelist" id="categoryTileList">
+                <h3>Categories</h3>
+                <ul id="categorytilelist"></ul>
+            </div>
+            <div class="tilelist" id="videoTileList">
+                <h3>Videos</h3>
+                <ul id="videostilelist"></ul>
+            </div>
+            <div class="tilelist" id="imageTileList">
+                <h3>Images</h3>
+                <ul id="imagestilelist"></ul>
+            </div>
+        </div>
+    </body>
+</html>
