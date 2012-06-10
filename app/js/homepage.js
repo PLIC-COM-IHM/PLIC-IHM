@@ -1,21 +1,20 @@
-function homepage() {
+var projectList = null;
+
+function page_main() {
     console.debug('Trying to instanciate homepage...');
     dbGetAllCategories(hpInstantiateCategorie);
-    
-    
-    $('#previouspage').hide();
 }
 
 function hpInstantiateCategorie(categories) {
     // db filled ?
-    if (categories.length == 0) { window.setTimeout(homepage, 500); return; }
+    if (categories.length == 0) { window.setTimeout(page_main, 500); return; }
+
+    stopLoading();
+    $('#previouspage').hide();
+    $('#videoTileList').hide();
+    $('#imageTileList').hide();
 
     console.debug('Instanciate home page categories');
-    $("#content").empty()
-    .append('<div class="tilelist" id="categoryTileList">' +
-                '<h3>Categories</h3>' +
-                '<ul id="categorytilelist"></ul>' +
-            '</div>');
     
     for (i=0; i<categories.length; i++) {
         var id = 'c' + categories[i].categoryId;
@@ -30,10 +29,6 @@ function hpInstantiateCategorie(categories) {
 
 function hpInstantiateTechnologies(technologies) {
     console.debug('Instanciate home page categories');
-    $("#content").append('<div class="tilelist" id="technologyTileList">' +
-                            '<h3>Technologies</h3>' +
-                            '<ul id="technologiestilelist"></ul>' +
-                        '</div>');
     
     for (i=0; i<technologies.length; i++) {
         var id = 't' + technologies[i].technoId;
@@ -43,45 +38,37 @@ function hpInstantiateTechnologies(technologies) {
         $('#technologiestilelist').append(htmlTile);
     }
     
-    // Get videos
-    hpInstantiateVideos(null);
+    
+    // Get technologies
+    dbGetAllData(hpInstantiateData);
 }
 
-function hpInstantiateVideos(technologies) {
+function hpInstantiateData(projects) {
     console.debug('Instanciate home page videos');
-    $("#content").append('<div class="tilelist" id="videoTileList">' +
-                            '<h3>Videos</h3>' +
-                            '<ul id="videostilelist"></ul>' +
-                        '</div>');
+    
+    // save list
+    projectList = projects;
     
     $("#videostilelist").append('<li><video class="vtuile" width="128" height="128" loop src="projects/plic-comihm-2013/media/videos/IHM.mp4" onclick="set_controls(this);" ></li>');
     $("#videostilelist").append('<li><video class="vtuile" width="128" height="128" loop src="projects/plic-comihm-2013/media/videos/plic_social_network.mp4" onclick="set_controls(this);" ></li>');
     
-    // hide it
-    $(".tilelist:last").hide();
-    
-    // Get images
-    hpInstantiateImages(null);
+    console.debug('Instanciate home page images');
+    // Create images tiles
+    for (i=0; i<projects.length; i++) {
+        var id = 'p' + projects[i].id;
+        var htmlTile = '<li id="' + id + '"><strong>' + projects[i].folder + 'data/images/*</strong></li>';
+        $("#imageTileList").append(htmlTile);
+    }
 }
 
-function hpInstantiateImages(images) {
-    console.debug('Instanciate home page images');
-    $("#content").append('<div class="tilelist" id="imageTileList">' +
-                            '<h3>Images</h3>' +
-                            '<ul id="imagestilelist"></ul>' +
-                        '</div>');
-    
-    // hide it
-    $(".tilelist:last").hide();
-}
 
 
 function nextTitles()
 {
-    $('#previouspage').show(1000);
+    $('#previouspage').show();
     $('#nextpage').hide(1000);
-    $('#categoryTileList').hide(1000);
     $('#technologyTileList').hide(1000);
+    $('#categoryTileList').hide(1000);
     $('#videoTileList').show(1000);
     $('#imageTileList').show(1000);
 }
@@ -90,9 +77,9 @@ function nextTitles()
 function prevTitles()
 {
     $('#previouspage').hide(1000);
-    $('#nextpage').show(1000);
-    $('#categoryTileList').show(1000);
+    $('#nextpage').show();
     $('#technologyTileList').show(1000);
-    $('#videoTileList').show(1000);
+    $('#categoryTileList').show(1000);
+    $('#videoTileList').hide(1000);
     $('#imageTileList').hide(1000);
 }

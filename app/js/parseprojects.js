@@ -37,6 +37,9 @@ function parseProjectFolder(folder) {
                     success: function (media) {
                         data.videos = parseFolder(media);
                         
+                        // set folder
+                        data.folder = folder;
+                        
                         // add to database
                         console.debug(JSON.stringify(data));
                         mtiapp.webdb.addProject(data);

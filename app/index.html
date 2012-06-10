@@ -2,35 +2,13 @@
 <html>
     <head>
         <title>MTI</title>
-        <link rel="stylesheet" type="text/css" href="css/design.css">
         <script language="JavaScript" src="js/jquery.js"></script>
         <script language="JavaScript" src="js/database.js"></script>
         <script language="JavaScript" src="js/parseprojects.js"></script>
-        <script language="JavaScript" src="js/homepage.js"></script>
-        <script type="text/javascript" src="js/tuiles.js"></script>
-        <script language="JavaScript" src="js/init.js"></script>
+        <script language="JavaScript" src="js/reinitialisation.js"></script>
     </head>
     <body>
-        <header>
-            <h1>MTI</h1>
-            <div id="buttonbar">
-                <ul>
-                    <li><img src="images/home.jpg" alt="Home" onclick="javascript:location.href='index.html';" height="67" width="67" /></li>
-                    <li><img src="images/rotate.jpg" alt="Rotate" height="67" width="67" /></li>
-                    <li><img src="images/search.jpg" alt="Search" onclick="javascript:location.href='keyboard.html';" height="67" width="67" /></li>
-                </ul>
-            </div> <!-- Buttonbar -->
-        </header>
-        <div class="clear" />
-        <div id="navbar">
-            <div id="previouspage">
-                <img id="next" src="images/previouspage.jpg" alt="Previous" onclick="prevTitles()" height="67" width="67" />
-            </div>
-            <div id="nextpage">
-                <img src="images/nextpage.jpg" alt="Next" onclick="nextTitles()" height="67" width="67" />
-            </div>            
-        </div> <!-- Navbar -->
-        <div class="clear" />
-        <div id="content"></div>
+        <h1>Parsing project folder...</h1>
+        <img id="loading" src="images/loading.gif" alt="Loading..."/>
     </body>
 </html>
