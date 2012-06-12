@@ -15,21 +15,22 @@
             <img id="logo" src="images/mti.png" alt="MTI" />
             <div id="buttonbar">
                 <ul>
-                    <li><img src="images/home.jpg" alt="Home" onclick="javascript:location.href='index.html';" height="67" width="67" /></li>
+                    <li><img src="images/home.jpg" alt="Home" onclick="javascript:location.href='homepage.html';" height="67" width="67" /></li>
                     <li><img src="images/rotate.jpg" alt="Rotate" height="67" width="67" /></li>
                     <li><img src="images/search.jpg" alt="Search" onclick="javascript:location.href='keyboard.html';" height="67" width="67" /></li>
                 </ul>
             </div> <!-- Buttonbar -->
         </header>
-        <div id="content">
+        <img id="loading" src="images/loading.gif" alt="Loading..."/>
+        <div id="content" class="project_main">
             <img id="projectHeader" src="" alt="" />
             <h1></h1>
             <p> 
             </p>
-            <ul>
-                <li><span>PrŽsentation</span></li>
-                <li><span>VidŽos</span></li>
-                <li><span>Photos</span></li>
+            <div id="projecttiles">
+                <div class="projecttile pres"><strong>Présentation</strong><p></p></div>
+                <div class="projecttile video"><strong>Vidéos</strong><video class="vtuile" width="128" height="128" loop src="projects/plic-comihm-2013/media/videos/IHM.mp4"></div>
+                <div class="projecttile image"><strong>Photos</strong><img width="128" height="128" class="ituile" src="" alt="" /></div>
             </ul>
         </div>
     </body>

@@ -509,3 +509,60 @@ function dbGetAllData(onSuccessCallback) {
             });
     });
 }
+
+
+// getProjectById (projectId, onFoundCallback)
+function dbGetProjectById(projectId, onFoundCallback) {
+    // get project
+    var db = mtiapp.webdb.db;
+    db.transaction(function(tx) {
+        // creating query with all join
+        var q = "SELECT *  FROM project " +
+                "LEFT JOIN image ON project.id = image.projectId " +
+                "LEFT JOIN video ON project.id = video.projectId " +
+                "WHERE project.id = " + projectId;
+        tx.executeSql(q, [],
+            function(tx, rs) {
+                var results = new Array();
+                for (i=0; i<rs.rows.length; i++) {
+                    results = addToProjectList(results, rs.rows.item(i));
+                }
+                if (results.length > 0)
+                {
+                    onFoundCallback(results[0]);
+                }
+                else
+                {
+                    alert("Project does not exist anymore.");
+                }
+            },
+            function(tx, e) {
+                alert("There has been an error: " + e.message);
+            });
+    });
+}
+
+// search(searchKey, onFoundCallback)
+// onFoundCallback(projectFound)
+function dbSearch(searchKey, onFoundCallback) {
+    // get project
+    var db = mtiapp.webdb.db;
+    db.transaction(function(tx) {
+        var q = "SELECT project.id, project.name " +
+                "FROM project " +
+                "WHERE project.name LIKE '%" + searchKey + "%'";
+        tx.executeSql(q, [],
+            function(tx, rs) {
+                console.debug('Searching project with key "' + searchKey + '"...');
+                var results = new Array();
+                for (i=0; i<rs.rows.length; i++) {
+                    results.push(rs.rows.item(i));
+                }
+                
+                onFoundCallback(results);
+            },
+            function(tx, e) {
+                alert("There has been an error: " + e.message);
+            });
+    });
+}
