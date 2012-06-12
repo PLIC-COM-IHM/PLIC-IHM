@@ -1,0 +1,66 @@
+html, body{
+	height: 100%;
+}
+
+body {
+	background-color: #5f5f5f;
+	margin: 0;
+}
+
+.yellow {
+	height: 200px;
+	background-color: #fad80b;
+}
+
+.green {
+	background-color: #85c21f;
+	height: 300px;
+}
+
+#rotate {
+	text-align: center;
+	padding: 28px;
+	font: 30px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	background-color: rgba(0,0,0,0.12);
+	width: 95px;
+	margin: auto;
+}
+
+.down {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+}
+
+.up {
+    -webkit-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    
+    
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+}
+
+#container {
+	background-color: #84bffe;
+	margin-bottom: 300px;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+#__tuiojs_connector_npTuioClient {
+	width: 0;
+	height: 0;
+}
