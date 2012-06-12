@@ -509,3 +509,30 @@ function dbGetAllData(onSuccessCallback) {
             });
     });
 }
+
+
+// search(searchKey, onFoundCallback)
+// onFoundCallback(projectFound)
+function dbSearch(searchKey, onFoundCallback) {
+    // get project
+    var db = mtiapp.webdb.db;
+    db.transaction(function(tx) {
+        // creating query with all join
+        var q = "SELECT project.id, project.name " +
+                "FROM project " +
+                "WHERE project.name LIKE '%" + searchKey + "%'";
+        tx.executeSql(q, [],
+            function(tx, rs) {
+                console.debug('Searching project with key "' + searchKey + '"...');
+                var results = new Array();
+                for (i=0; i<rs.rows.length; i++) {
+                    results.push(rs.rows.item(i));
+                }
+                
+                onFoundCallback(results);
+            },
+            function(tx, e) {
+                alert("There has been an error: " + e.message);
+            });
+    });
+}

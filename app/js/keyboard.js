@@ -1,13 +1,13 @@
-$(document).ready(
-	function()
-	{
-
-	}
-);
+function page_main()
+{
+	
+}
 
 function addkey (text)
 {
 	document.getElementById("champ").value += text.innerHTML;
+	//result = document.getElementById("champ").value;
+	//dbSearch(result, showResults);
 }
 
 function spacekey ()
@@ -25,6 +25,19 @@ function remkey ()
 
 function enterkey ()
 {
+	console.debug('Enter key');
 	result = document.getElementById("champ").value;
+	dbSearch(result, showResults);
+	$('#keyzone').hide(1000);
+}
 
+function showResults(projectList)
+{
+	console.debug('Showing results...');
+	$('#resultList').empty();
+	for (i=0; i<projectList.length; i++) {
+		console.debug('Showing result: ' + projectList[i].name);
+		projectHtml = '<li>' + projectList[i].name + '</li>';
+		$('#resultList').append(projectHtml);
+	}
 }
