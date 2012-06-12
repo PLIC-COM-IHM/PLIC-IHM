@@ -55,9 +55,12 @@ function hpInstantiateData(projects) {
     console.debug('Instanciate home page images');
     // Create images tiles
     for (i=0; i<projects.length; i++) {
-        var id = 'p' + projects[i].id;
-        var htmlTile = '<li id="' + id + '"><strong>' + projects[i].folder + 'data/images/*</strong></li>';
-        $("#imageTileList").append(htmlTile);
+        if (projects[i].images != null && projects[i].images.length > 0)
+        {
+            var pid = 'p' + projects[i].id;
+            var htmlTile = '<li id="' + pid + '"><img width="128" height="128" class="ituile" src="" alt="" /></li>';
+            $("#imageTileList").append(htmlTile);
+        }
     }
 }
 
