@@ -12,7 +12,7 @@ VDELAY = 2000; //ms
 VOFFSET = 6; //s
 
 // delay pictures
-PDELAY = 2000; //ms
+PDELAY = 3000; //ms
 
 
 /*
@@ -79,8 +79,27 @@ function displayPictures ()
 //TODO
 function changePicture (img)
 {
-	//liste = lister(img.alt);
-	//img.src = ;
+	projectId = img.parentNode.id.substring(1);
+	project = getProjectById(parseInt(projectId));
+	if (project != null)
+	{
+		random = Math.floor(Math.random() * (project.images.length));
+		imgUrl = project.folder + 'media/images/' + project.images[random];
+		console.debug('Changing image of project #' + project.id + ' by ' + imgUrl);
+		img.src = imgUrl;
+	}
 }
 
 
+function getProjectById(id)
+{
+	for (i=0; i<projectList.length; ++i)
+	{
+		if (projectList[i].id == id)
+		{
+			return projectList[i];
+		}
+	}
+	
+	return null;
+}
