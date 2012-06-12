@@ -3,6 +3,8 @@ var projectList = null;
 function page_main() {
     console.debug('Trying to instanciate homepage...');
     dbGetAllCategories(hpInstantiateCategorie);
+
+    $('.tilelist li').click(tileClick);
 }
 
 function hpInstantiateCategorie(categories) {
@@ -49,8 +51,8 @@ function hpInstantiateData(projects) {
     // save list
     projectList = projects;
     
-    $("#videostilelist").append('<li><video class="vtuile" width="128" height="128" loop src="projects/plic-comihm-2013/media/videos/IHM.mp4" onclick="set_controls(this);" ></li>');
-    $("#videostilelist").append('<li><video class="vtuile" width="128" height="128" loop src="projects/plic-comihm-2013/media/videos/plic_social_network.mp4" onclick="set_controls(this);" ></li>');
+    $("#videostilelist").append('<li><video class="vtuile" width="128" height="128" loop src="projects/plic-comihm-2013/media/videos/IHM.mp4"></li>');
+    $("#videostilelist").append('<li><video class="vtuile" width="128" height="128" loop src="projects/plic-comihm-2013/media/videos/plic_social_network.mp4"></li>');
     
     console.debug('Instanciate home page images');
     // Create images tiles
@@ -85,4 +87,17 @@ function prevTitles()
     $('#categoryTileList').show(1000);
     $('#videoTileList').hide(1000);
     $('#imageTileList').hide(1000);
+}
+
+
+/* Navigation */
+function tileClick()
+{
+    alert('toto');
+    console.debug('Clicked on homepage tile');
+    parentId = $(this).parent().attr('id');
+    if (parentId == 'imageTileList')
+    {
+        window.location = 'project.html?' + $(this).attr('id');
+    }
 }

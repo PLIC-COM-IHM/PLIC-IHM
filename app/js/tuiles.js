@@ -80,7 +80,8 @@ function displayPictures ()
 function changePicture (img)
 {
 	projectId = img.parentNode.id.substring(1);
-	project = getProjectById(parseInt(projectId));
+	if (project == null)
+		project = getProjectById(parseInt(projectId));
 	if (project != null)
 	{
 		random = Math.floor(Math.random() * (project.images.length));
@@ -93,6 +94,9 @@ function changePicture (img)
 
 function getProjectById(id)
 {
+	if (projectList == null)
+		return null;
+
 	for (i=0; i<projectList.length; ++i)
 	{
 		if (projectList[i].id == id)
