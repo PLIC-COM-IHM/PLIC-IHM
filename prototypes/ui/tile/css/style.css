@@ -170,3 +170,16 @@ div.arrow {
 
 
 /* @end */
+
+/* @group Debug */
+
+.touch-debug {
+	width: 30px;
+	height: 30px;
+	background-color: red;
+	position: fixed;
+	border-radius: 15px;
+	z-index: 10000;
+}
+
+/* @end */

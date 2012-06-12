@@ -6,7 +6,7 @@ var SCROLL_ACCELERATION_POINTS_TO_WATCH = 15;
 var SCROLL_ACCELERATION_MIN_STD_DEVIATION = 0.03;
 
 var IS_PERFORMING_DECELERATION = false;
-var SCROLL_DECELERATION_TIME = 1000;
+var SCROLL_DECELERATION_TIME = 500;
 
 var UPDATE_INTERVAL = 20;
 
@@ -257,11 +257,31 @@ function update() {
 				};
 				if (IS_PERFORMING_DECELERATION)
 					IS_PERFORMING_DECELERATION = false;
+				
+				// Displays the taps locations on the UI
+				if (DEBUG == true) {
+					var x = x * BODY_WIDTH;
+					var y = y * BODY_HEIGHT;
+					// $('body').append('<div id="touch-'+sid+'" class="touch-debug" style="top: '+y+'; left: '+x+';">d</div>');
+					var touch = $('#touch-0').clone();
+					touch.attr('id', 'touch-'+sid);
+					touch.css('left', x);
+					touch.css('top', y);
+					touch.show();
+					touch.appendTo('body');
+				}
 			}
 			// The object has alreaady been detected
 			else {
 				// Updates the last position seen of the touch input
 				gestures[sid].lastPositionSeen = gesture.path[gesture.path.length - 1]
+				if (DEBUG == true) {
+					var x = x * BODY_WIDTH;
+					var y = y * BODY_HEIGHT;
+					var touch = $('#touch-'+sid);
+					touch.css('left', x);
+					touch.css('top', y);
+				}
 			}
 		};
 		// console.log(tuio.cursors);
@@ -276,6 +296,10 @@ function update() {
 			analyseEndedGesture(value);
 			// Removes the gesture of the gestures repository
 			delete gestures[key];
+			if (DEBUG == true) {
+				var touch = $('#touch-'+key);
+				touch.remove();
+			}
 		}
 		// Analyses possible gestures while a finger is on the screen
 		else {

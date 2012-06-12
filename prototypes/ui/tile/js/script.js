@@ -1,3 +1,6 @@
+
+DEBUG = true;
+
 // Data Objects
 INIT_TOP_TEXT_TILE = null;
 TILE_TEXT_SCROLL_DELAY = 10000;
