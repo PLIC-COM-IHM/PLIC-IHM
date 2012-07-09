@@ -12,7 +12,7 @@ function hpInstantiateCategorie(categories) {
     if (categories.length == 0) { window.setTimeout(page_main, 500); return; }
 
     stopLoading();
-    $('#previouspage').hide();
+    $('#arrowleft').hide();
     $('#videoTileList').hide();
     $('#imageTileList').hide();
 
@@ -70,8 +70,8 @@ function hpInstantiateData(projects) {
 
 function nextTitles()
 {
-    $('#previouspage').show();
-    $('#nextpage').hide(1000);
+    $('#arrowleft').show();
+    $('#arrowright').hide(1000);
     $('#technologyTileList').hide(1000);
     $('#categoryTileList').hide(1000);
     $('#videoTileList').show(1000);
@@ -81,8 +81,8 @@ function nextTitles()
 
 function prevTitles()
 {
-    $('#previouspage').hide(1000);
-    $('#nextpage').show();
+    $('#arrowleft').hide(1000);
+    $('#arrowright').show();
     $('#technologyTileList').show(1000);
     $('#categoryTileList').show(1000);
     $('#videoTileList').hide(1000);
