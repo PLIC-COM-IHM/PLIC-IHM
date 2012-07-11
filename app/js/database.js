@@ -548,15 +548,29 @@ function dbSearch(searchKey, onFoundCallback) {
     // get project
     var db = mtiapp.webdb.db;
     db.transaction(function(tx) {
-        var q = "SELECT project.id, project.name " +
-                "FROM project " +
-                "WHERE project.name LIKE '%" + searchKey + "%'";
+        // creating query with all join
+        var q = "SELECT project.id, project.folder, project.name, project.year, " +
+                "project.shortDescription, project.description, " +
+                "project.logoPath, project.headerPath, project.module, " +
+                "image.imagePath, video.videoPath, member.firstname, " +
+                "member.lastname, member.login, member.photoPath, " +
+                "projectTechnology.technologyId, technology.name, " +
+                "projectCategory.categoryId, category.name ";
+        q += "FROM project ";
+        q += "LEFT JOIN image ON project.id = image.projectId ";
+        q += "LEFT JOIN video ON project.id = video.projectId ";
+        q += "LEFT JOIN member ON project.id = member.projectId ";
+        q += "LEFT JOIN projectTechnology ON project.id = projectTechnology.projectId ";
+        q += "LEFT JOIN technology ON projectTechnology.technologyId = technology.technoId ";
+        q += "LEFT JOIN projectCategory ON project.id = projectCategory.projectId ";
+        q += "LEFT JOIN category ON projectCategory.categoryId = category.categoryId ";
+        q +=  "WHERE project.name LIKE '%" + searchKey + "%'";
         tx.executeSql(q, [],
             function(tx, rs) {
-                console.debug('Searching project with key "' + searchKey + '"...');
+                console.debug('Getting all projects...');
                 var results = new Array();
                 for (i=0; i<rs.rows.length; i++) {
-                    results.push(rs.rows.item(i));
+                    results = addToProjectList(results, rs.rows.item(i));
                 }
                 
                 onFoundCallback(results);

@@ -1,23 +1,21 @@
 html, body {height: 100%;}
 
-#wrap { min-height: 580px; }
-#resultList { overflow:auto; padding-bottom: 425px; }
+#wrap { min-height: -webkit-calc(100% - 100px); min-height: calc(100% - 114px); }
+#resultList { overflow:auto; padding-bottom: 480px; }
 
 #searchfield
 {
-	width : 80%;
-	height : 40px;
-	margin-top : 40px;
-	margin-left : 10%;
-	padding : 10px;
-	font-size : 20px;
-
+	margin-top: 5px;
+	height: 48px;
+	width: 600px;
+	margin-left: 20px;
+	font-size: 20px;
+	
 	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+	-webkit-border-radius: 5px;	
 }
 
-#keyzone { position: relative; clear:both; margin: auto; margin-top: -425px; font-size: 30px; }
+#keyzone { clear:both; margin-top: -480px; font-size: 30px; border-top: 1px solid white; }
 	#keyzone .line { text-align: center; margin: auto; clear: both; }
 
 .key
@@ -29,8 +27,8 @@ html, body {height: 100%;}
 	width : 50px;
 	height : 50px;
 	margin : 5px;
+	
 	border-radius: 5px;
-	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 
 }
@@ -57,7 +55,6 @@ html, body {height: 100%;}
 	height : 50px;
 	margin : 5px;
 	border-radius: 5px;
-	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;		
 }
 .remkey
@@ -70,6 +67,5 @@ html, body {height: 100%;}
 	height : 50px;
 	margin : 5px;
 	border-radius: 5px;
-	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;	
 }

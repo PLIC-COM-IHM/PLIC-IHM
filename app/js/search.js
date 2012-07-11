@@ -6,8 +6,7 @@ function page_main()
 function addkey (text)
 {
 	document.getElementById("searchfield").value += text.innerHTML;
-	//result = document.getElementById("champ").value;
-	//dbSearch(result, showResults);
+	reloadResults()
 }
 
 function spacekey ()
@@ -17,18 +16,23 @@ function spacekey ()
 
 function remkey ()
 {
-
 	document.getElementById("searchfield").value =
 		document.getElementById("searchfield").value.slice(
 			0, document.getElementById("searchfield").value.length - 1);
+	reloadResults()
 }
 
 function enterkey ()
 {
 	console.debug('Enter key');
+	reloadResults()
+	$('#keyzone').hide(1000);
+}
+
+function reloadResults()
+{
 	result = document.getElementById("searchfield").value;
 	dbSearch(result, showResults);
-	$('#keyzone').hide(1000);
 }
 
 function showResults(projectList)
@@ -36,8 +40,14 @@ function showResults(projectList)
 	console.debug('Showing results...');
 	$('#resultList').empty();
 	for (i=0; i<projectList.length; i++) {
-		console.debug('Showing result: ' + projectList[i].name);
-		projectHtml = '<li>' + projectList[i].name + '</li>';
+		if (projectList[i].images.length > 0) {
+			image = '<img width="128" height="128" src="' + projectList[i].folder + 'media/images/' + projectList[i].images[0] + '" alt="" />';
+		} else {
+			'<img src="" alt="" />';
+		}
+		title = '<strong>' + projectList[i].name + '</strong>';
+		desc = '<em>' + projectList[i].shortDescription + '"</em>';
+		projectHtml = '<li>' + image + title + desc + '</li>';
 		$('#resultList').append(projectHtml);
 	}
 }
