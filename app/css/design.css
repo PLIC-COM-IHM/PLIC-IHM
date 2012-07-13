@@ -1,14 +1,17 @@
 /* reset */
 ul { padding:0; margin:0; }
 li { list-style: none; padding:0; margin:0; }
+h1 { font-size : 30px; padding: 10px; margin-bottom : 10px; }
 h2, h3 { font-size:18px; }
 * { padding:0px; margin:0px; }
-body { margin: 5px 10px; font-size:14px; font-family:droid sans; color:#ffffff; background: #000000 url(../images/bg.png) repeat; }
+a { text-decoration: none; color: #ffffff; }
+body { margin: 10px 10px 0 0; font-size:14px; font-family:droid sans; color:#ffffff; background: #000000 url(../images/bg.png) repeat; }
 
 
 /* Header */
 header { height: 114px; }
-#logo { float: left; }
+#previousButton { float:left; }
+#logo { float: left; margin-left: 10px; }
 #buttonbar { float:right; }
     #buttonbar li { display:inline; }
 
@@ -18,7 +21,7 @@ header { height: 114px; }
 #arrowright { float:right;}
 
 /* Content */
-#content { clear: both; }
+#content { clear: both; margin-left: 74px; }
 
 /* Tile */
 .tilelist { width: 50%; float: left;}

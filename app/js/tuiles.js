@@ -79,7 +79,7 @@ function displayPictures ()
 //
 function changePicture (img)
 {
-	projectId = img.parentNode.id.substring(1);
+	projectId = img.id.substring(1);
 	project = getProjectById(parseInt(projectId));
 	if (project != null)
 	{

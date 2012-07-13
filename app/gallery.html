@@ -3,36 +3,29 @@
     <head>
         <title>MTI gallerie</title>
         <link rel="stylesheet" type="text/css" href="css/design.css">
-		<link rel="stylesheet" type="text/css" href="css/gallerie.css">
+	<link rel="stylesheet" type="text/css" href="css/gallerie.css">
         <script language="JavaScript" src="js/jquery.js"></script>
         <script language="JavaScript" src="js/database.js"></script>
         <script language="JavaScript" src="js/gallerie.js"></script>
         <script type="text/javascript" src="js/tuiles.js"></script>
         <script language="JavaScript" src="js/init.js"></script>
-		<script language="JavaScript" src="js/navig.js"></script>
-		
+	<script language="JavaScript" src="js/navig.js"></script>
     </head>
     <body>
         <header>
-            <img id="logo" src="images/mti.png" alt="MTI" />
+            <img id="previousButton" src="images/arrowleft.png" alt="Previous" onclick="javascript:history.back()" height="64" width="64" />
+            <img id="logo" src="images/logo.png" alt="MTI" />
             <div id="buttonbar">
                 <ul>
-                    <li><img src="images/home.jpg" alt="Home" onclick="javascript:location.href='homepage.html';" height="67" width="67" /></li>
-                    <li><img src="images/rotate.jpg" alt="Rotate" onclick="rotateBody()" height="67" width="67" /></li>
-                    <li><img src="images/search.jpg" alt="Search" onclick="javascript:location.href='keyboard.html';" height="67" width="67" /></li>
+                    <li><img src="images/home.png" alt="Home" onclick="javascript:location.href='homepage.html';" height="64" width="64" /></li>
+                    <li><img src="images/rotate.png" alt="Rotate" onclick="rotateBody()" height="64" width="64" /></li>
+                    <li><img src="images/search.png" alt="Search" onclick="javascript:location.href='search.html';" height="64" width="64" /></li>
                 </ul>
             </div> <!-- Buttonbar -->
         </header>
-        <div class="clear" />
-	<div class="previous" onclick="">
-		<img class="navig" src="images/previouspage.jpg" alt="previous" onclick="" />
-		<p><br>Revenir a la page precedente</p>
-	</div>
 	
-	<div class="content">
-		<h2 class="mediatype">
-			Photos
-		</h2>
+	<div id="content">
+		<h1>Photos</h1>
 
 		<img class="media" src="" alt="" onclick="" />
 		<img class="media" src="" alt="" onclick="" />

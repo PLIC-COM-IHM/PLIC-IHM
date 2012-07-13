@@ -21,7 +21,7 @@ function hpInstantiateCategorie(categories) {
     for (i=0; i<categories.length; i++) {
         var id = 'c' + categories[i].categoryId;
         var nbProjects = categories[i].nbProjects + (categories[i].nbProjects <= 1 ? ' projet' : ' projets');
-        var htmlTile = '<li id="' + id + '"><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></li>';
+        var htmlTile = '<a href="projectList.html?' + id + '"><li width="128" height="128" id="' + id + '"><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></a></li>';
         $("#categorytilelist").append(htmlTile);
     }
     
@@ -36,7 +36,7 @@ function hpInstantiateTechnologies(technologies) {
         var id = 't' + technologies[i].technoId;
         var imagePath = 'data/technologies/' + technologies[i].name + '.png';
         var nbProjects = technologies[i].nbProjects + (technologies[i].nbProjects <= 1 ? ' projet' : ' projets');
-        var htmlTile = '<li id="' + id + '"><img src="' + imagePath + '" alt="" /><em>' + nbProjects + '</em></li>'
+        var htmlTile = '<a href="projectList.html?' + id + '"><li id="' + id + '"><img src="' + imagePath + '" alt="" /><em>' + nbProjects + '</em></a></li>'
         $('#technologiestilelist').append(htmlTile);
     }
     
@@ -60,7 +60,7 @@ function hpInstantiateData(projects) {
         if (projects[i].images != null && projects[i].images.length > 0)
         {
             var pid = 'p' + projects[i].id;
-            var htmlTile = '<li id="' + pid + '"><img width="128" height="128" class="ituile" src="" alt="" /></li>';
+            var htmlTile = '<li><a href="gallery.html?' + pid + '"><img width="128" height="128" id="' + pid + '" class="ituile" src="" alt="" /></a></li>';
             $("#imageTileList").append(htmlTile);
         }
     }

@@ -37,7 +37,6 @@ function reloadResults()
 
 function showResults(projectList)
 {
-	console.debug('Showing results...');
 	$('#resultList').empty();
 	for (i=0; i<projectList.length; i++) {
 		if (projectList[i].images.length > 0) {
