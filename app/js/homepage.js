@@ -19,7 +19,7 @@ function hpInstantiateCategorie(categories) {
     for (i=0; i<categories.length; i++) {
         var id = 'c' + categories[i].categoryId;
         var nbProjects = categories[i].nbProjects + (categories[i].nbProjects <= 1 ? ' projet' : ' projets');
-        var htmlTile = '<a href="projectList.html?' + id + '"><li width="128" height="128" id="' + id + '"><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></a></li>';
+        var htmlTile = '<a data-transition="slide" href="projectList.html?' + id + '"><li width="128" height="128" id="' + id + '"><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></a></li>';
         $("#categorytilelist").append(htmlTile);
     }
     
@@ -69,7 +69,7 @@ function hpInstantiateData(projects) {
 function nextTitles()
 {
     $('#arrowleft').show();
-    $('#arrowright').hide(1000);
+    $('#arrowright').hide();
     $('#technologyTileList').hide(1000);
     $('#categoryTileList').hide(1000);
     $('#videoTileList').show(1000);
@@ -79,7 +79,7 @@ function nextTitles()
 
 function prevTitles()
 {
-    $('#arrowleft').hide(1000);
+    $('#arrowleft').hide();
     $('#arrowright').show();
     $('#technologyTileList').show(1000);
     $('#categoryTileList').show(1000);

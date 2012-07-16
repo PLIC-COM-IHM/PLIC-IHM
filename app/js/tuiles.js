@@ -57,7 +57,7 @@ function displayVideo()
 	videos = getElementsByClass("vtuile", "video");
 	for (i = 0 ; i < videos.length; i++)
 		changeOffset(videos[i]);
-	timer = setTimeout(displayVideo, VDELAY);
+	timer = setTimeout(displayVideo, VDELAY );
 }
 
 function changeOffset(video)
@@ -67,26 +67,27 @@ function changeOffset(video)
 
 
 /* Pictures */
-function displayPictures ()
+function displayPictures()
 {
-	imgs = getElementsByClass("ituile", "img");
-	for (i = 0 ; i < imgs.length; i++)
-		changePicture(imgs[i]);
+	$('.ituile').each(function(index) {
+		changePicture($(this));
+	});
 
-	timer = setTimeout(displayPictures, PDELAY);
+	timer = setTimeout(displayPictures, PDELAY + Math.floor(Math.random() * 1000));
 }
 
 //
-function changePicture (img)
+function changePicture(img)
 {
-	projectId = img.id.substring(1);
-	project = getProjectById(parseInt(projectId));
+	projectId = parseInt(img.attr("id").substring(1));
+	project = getProjectById(projectId);
 	if (project != null)
 	{
 		random = Math.floor(Math.random() * (project.images.length));
 		imgUrl = project.folder + 'media/images/' + project.images[random];
-		console.debug('Changing image of project #' + project.id + ' by ' + imgUrl);
-		img.src = imgUrl;
+		img.fadeOut(100);
+		img.attr("src", imgUrl);
+		img.fadeIn(300);
 	}
 }
 
@@ -108,7 +109,6 @@ function changeUniPicture (img)
 	{
 		random = Math.floor(Math.random() * (project.images.length));
 		imgUrl = project.folder + 'media/images/' + project.images[random];
-		console.debug('Changing image of project #' + project.id + ' by ' + imgUrl);
 		img.src = imgUrl;
 	}
 }

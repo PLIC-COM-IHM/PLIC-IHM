@@ -17,7 +17,7 @@ header { height: 114px; }
     #buttonbar li { display:inline; }
 
 /* Navbar */
-#navbar { clear: both; }
+#navbar { clear: both; margin-left: 74px; }
 #arrowleft { float:left; }
 #arrowright { float:right;}
 
@@ -30,6 +30,7 @@ header { height: 114px; }
     .tilelist li a { display: block; width: 132px; height: 132px; }
     .tilelist li a:hover { background-color: #2AAAFF; }
     .tilelist li strong { display: block; }
+    .tilelist li img { margin: 2px; }
     .tilelist li em { visibility:hidden; }
     
 /* Project page */
