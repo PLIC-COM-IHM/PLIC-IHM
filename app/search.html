@@ -7,87 +7,88 @@
         <script language="JavaScript" src="js/jquery.js"></script>
         <script language="JavaScript" src="js/database.js"></script>
         <script language="JavaScript" src="js/parseprojects.js"></script>
-	<script type="text/javascript"  src="js/keyboard.js"></script>
+	<script type="text/javascript"  src="js/search.js"></script>
+	<script type="text/javascript"  src="js/navig.js"></script>
+	<script type="text/javascript"  src="js/main.js"></script>
     </head>
     <body>
-	<header>
-	    <img id="logo" src="images/mti.png" alt="MTI" />
-		<div id="buttonbar">
-		    <ul>
-		        <li><img src="images/home.jpg" alt="Home" onclick="javascript:location.href='index.html';" height="67" width="67" /></li>
-		        <li><img src="images/rotate.jpg" alt="Rotate" height="67" width="67" /></li>			    <li><img src="images/search.jpg" alt="Search" onclick="javascript:location.href='keyboard.html';" height="67" width="67" /></li>
-		    </ul>
-		    </div> <!-- Buttonbar -->
-		</header>
-		<div id="top">
-		    <input id="champ" type="text" value="" />
-		</div>
-		<ul id="resultList"></ul>
+        <header>
+	    <img id="previousButton" src="images/arrowleft.png" alt="Previous" onclick="javascript:history.back()" height="64" width="64" />
+            <img id="logo" src="images/logo.png" alt="MTI" />
+	    <input id="searchfield" type="text" value="" />
+            <div id="buttonbar">
+                <ul>
+                    <li><img src="images/home.png" alt="Home" onclick="javascript:location.href='homepage.html';" height="64" width="64" /></li>
+                    <li><img src="images/rotate.png" alt="Rotate" onclick="rotateBody()" height="64" width="64" /></li>
+                    <li><img src="images/search.png" alt="Search" onclick="javascript:location.href='search.html';" height="64" width="64" /></li>
+                </ul>
+            </div> <!-- Buttonbar -->
+        </header>
+	<!--
+	<div>
+	    <input id="searchfield" type="text" value="" />
+	</div>
+	-->
+	<div id="wrap">
+	    <ul id="resultList"></ul>
+	</div>
+	
+	<div id="keyzone">
+	    <div class="line" style="width: 820px;">
+		<div class="key" onclick="addkey(this)">1</div>
+		<div class="key" onclick="addkey(this)">2</div>
+		<div class="key" onclick="addkey(this)">3</div>
+		<div class="key" onclick="addkey(this)">4</div>
+		<div class="key" onclick="addkey(this)">5</div>
+		<div class="key" onclick="addkey(this)">6</div>
+		<div class="key" onclick="addkey(this)">7</div>
+		<div class="key" onclick="addkey(this)">8</div>
+		<div class="key" onclick="addkey(this)">9</div>
+		<div class="key" onclick="addkey(this)">0</div>
+	    </div>
 
-		<div id="keyzone">
-		    <div id="first"><div/>
-		    <div class="key" onclick="addkey(this)">1</div>
-		    <div class="key" onclick="addkey(this)">2</div>
-		    <div class="key" onclick="addkey(this)">3</div>
-		    <div class="key" onclick="addkey(this)">4</div>
-		    <div class="key" onclick="addkey(this)">5</div>
-		    <div class="key" onclick="addkey(this)">6</div>
-		    <div class="key" onclick="addkey(this)">7</div>
-		    <div class="key" onclick="addkey(this)">8</div>
-		    <div class="key" onclick="addkey(this)">9</div>
-		    <div class="key" onclick="addkey(this)">0</div>
-		    <div class="key" onclick="addkey(this)">+</div>
-		    <div class="key" onclick="addkey(this)">-</div>
+	    <div class="line" style="width: 820px;">
+		<div class="key" onclick="addkey(this)">Q</div>
+		<div class="key" onclick="addkey(this)">W</div>
+		<div class="key" onclick="addkey(this)">E</div>
+		<div class="key" onclick="addkey(this)">R</div>
+		<div class="key" onclick="addkey(this)">T</div>
+		<div class="key" onclick="addkey(this)">Y</div>
+		<div class="key" onclick="addkey(this)">U</div>
+		<div class="key" onclick="addkey(this)">I</div>
+		<div class="key" onclick="addkey(this)">O</div>
+		<div class="key" onclick="addkey(this)">P</div>
+	    </div>
+	    
+	    <div class="line" style="width: 820px;">
+		<div class="key" onclick="addkey(this)">A</div>
+		<div class="key" onclick="addkey(this)">S</div>
+		<div class="key" onclick="addkey(this)">D</div>
+		<div class="key" onclick="addkey(this)">F</div>
+		<div class="key" onclick="addkey(this)">G</div>
+		<div class="key" onclick="addkey(this)">H</div>
+		<div class="key" onclick="addkey(this)">J</div>
+		<div class="key" onclick="addkey(this)">K</div>
+		<div class="key" onclick="addkey(this)">L</div>
+		<div class="key" onclick="addkey(this)">M</div>
+	    </div>
+	    
+	    <div class="line" style="width: 656px;">
+		<div class="key" onclick="addkey(this)">+</div>
+		<div class="key" onclick="addkey(this)">Z</div>
+		<div class="key" onclick="addkey(this)">X</div>
+		<div class="key" onclick="addkey(this)">C</div>
+		<div class="key" onclick="addkey(this)">V</div>
+		<div class="key" onclick="addkey(this)">B</div>
+		<div class="key" onclick="addkey(this)">N</div>
+		<div class="key" onclick="addkey(this)">-</div>
+	    </div>
 
-		    <div class="clear"></div>
-		    <div id="second"><div/>
-
-		    <div class="key" onclick="addkey(this)">Q</div>
-		    <div class="key" onclick="addkey(this)">W</div>
-		    <div class="key" onclick="addkey(this)">E</div>
-		    <div class="key" onclick="addkey(this)">R</div>
-		    <div class="key" onclick="addkey(this)">T</div>
-		    <div class="key" onclick="addkey(this)">Y</div>
-		    <div class="key" onclick="addkey(this)">U</div>
-		    <div class="key" onclick="addkey(this)">I</div>
-		    <div class="key" onclick="addkey(this)">O</div>
-		    <div class="key" onclick="addkey(this)">P</div>
-		    <div class="remkey" onclick="remkey()">Delete</div>
-
-		    <div class="clear"></div>
-		    <div id="third"><div/>
-
-		    <div class="key" onclick="addkey(this)">A</div>
-		    <div class="key" onclick="addkey(this)">S</div>
-		    <div class="key" onclick="addkey(this)">D</div>
-		    <div class="key" onclick="addkey(this)">F</div>
-		    <div class="key" onclick="addkey(this)">G</div>
-		    <div class="key" onclick="addkey(this)">H</div>
-		    <div class="key" onclick="addkey(this)">J</div>
-		    <div class="key" onclick="addkey(this)">K</div>
-		    <div class="key" onclick="addkey(this)">L</div>
-		    <div class="enterkey" onclick="enterkey()">Enter</div>
-
-		    <div class="clear"></div>
-		    <div id="fourth"><div/>
-
-		    <div class="key" onclick="addkey(this)">Z</div>
-		    <div class="key" onclick="addkey(this)">X</div>
-		    <div class="key" onclick="addkey(this)">C</div>
-		    <div class="key" onclick="addkey(this)">V</div>
-		    <div class="key" onclick="addkey(this)">B</div>
-		    <div class="key" onclick="addkey(this)">N</div>
-		    <div class="key" onclick="addkey(this)">M</div>
-
-		    <div class="clear"></div>
-		    <div id="fifth"><div/>
-		    <div class="spacekey" onclick="spacekey(this)"></div>
-		    <!--
-		    <div class="key" onclick="addkey(this)">l</div>
-		    <div class="key" onclick="addkey(this)">t</div>
-		    <div class="key" onclick="addkey(this)">r</div>
-		    <div class="key" onclick="addkey(this)">b</div>
-		    -->
-		</div>
-	</body>
+	    <div class="line" style="width: 746px;">
+		<div class="remkey" onclick="remkey()">Delete</div>
+		<div class="spacekey" onclick="spacekey(this)"></div>
+		<div class="enterkey" onclick="enterkey()">Enter</div>
+	    </div>
+	</div>
+    </body>
 </html>

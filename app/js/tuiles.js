@@ -25,6 +25,7 @@ $(document).ready(
 		var timer = null;
 		
 		timer = setTimeout(displayPictures,1000);
+		timer = setTimeout(displayUniPictures,1000);
 		timer = setTimeout(displayVideo, 1000);
 	}
 );
@@ -66,7 +67,6 @@ function changeOffset(video)
 
 
 /* Pictures */
-
 function displayPictures ()
 {
 	imgs = getElementsByClass("ituile", "img");
@@ -76,12 +76,34 @@ function displayPictures ()
 	timer = setTimeout(displayPictures, PDELAY);
 }
 
-//TODO
+//
 function changePicture (img)
 {
+	projectId = img.id.substring(1);
+	project = getProjectById(parseInt(projectId));
+	if (project != null)
+	{
+		random = Math.floor(Math.random() * (project.images.length));
+		imgUrl = project.folder + 'media/images/' + project.images[random];
+		console.debug('Changing image of project #' + project.id + ' by ' + imgUrl);
+		img.src = imgUrl;
+	}
+}
+
+
+function displayUniPictures ()
+{
+	imgs = getElementsByClass("iunituile", "img");
+	for (i = 0 ; i < imgs.length; i++)
+		changeUniPicture(imgs[i]);
+
+	timer = setTimeout(displayUniPictures, PDELAY);
+}
+
+//
+function changeUniPicture (img)
+{
 	projectId = img.parentNode.id.substring(1);
-	if (project == null)
-		project = getProjectById(parseInt(projectId));
 	if (project != null)
 	{
 		random = Math.floor(Math.random() * (project.images.length));

@@ -8,43 +8,45 @@
         <script language="JavaScript" src="js/parseprojects.js"></script>
         <script language="JavaScript" src="js/homepage.js"></script>
         <script type="text/javascript" src="js/tuiles.js"></script>
+        <script type="text/javascript"  src="js/navig.js"></script>
         <script language="JavaScript" src="js/main.js"></script>
     </head>
     <body>
         <header>
-            <img id="logo" src="images/mti.png" alt="MTI" />
+            <img style="visibility: hidden;" id="previousButton" src="images/arrowleft.png" alt="Previous" onclick="javascript:history.back()" height="64" width="64" />
+            <img id="logo" src="images/logo.png" alt="MTI" />
             <div id="buttonbar">
                 <ul>
-                    <li><img src="images/home.jpg" alt="Home" onclick="javascript:location.href='homepage.html';" height="67" width="67" /></li>
-                    <li><img src="images/rotate.jpg" alt="Rotate" height="67" width="67" /></li>
-                    <li><img src="images/search.jpg" alt="Search" onclick="javascript:location.href='keyboard.html';" height="67" width="67" /></li>
+                    <li><img src="images/home.png" alt="Home" onclick="javascript:location.href='homepage.html';" height="64" width="64" /></li>
+                    <li><img src="images/rotate.png" alt="Rotate" onclick="rotateBody()" height="64" width="64" /></li>
+                    <li><img src="images/search.png" alt="Search" onclick="javascript:location.href='search.html';" height="64" width="64" /></li>
                 </ul>
             </div> <!-- Buttonbar -->
         </header>
         <div id="navbar">
-            <div id="previouspage">
-                <img id="next" src="images/previouspage.jpg" alt="Previous" onclick="prevTitles()" height="67" width="67" />
+            <div id="arrowleft">
+                <img src="images/arrowleft.png" alt="Previous" onclick="prevTitles()" height="50" width="50" />
             </div>
-            <div id="nextpage">
-                <img src="images/nextpage.jpg" alt="Next" onclick="nextTitles()" height="67" width="67" />
+            <div id="arrowright">
+                <img src="images/arrowright.png" alt="Next" onclick="nextTitles()" height="50" width="50" />
             </div>            
         </div> <!-- Navbar -->
         <img id="loading" src="images/loading.gif" alt="Loading..."/>
         <div id="content">
             <div class="tilelist" id="technologyTileList">
-                <h3>Technologies</h3>
+                <h2>Technologies</h2>
                 <ul id="technologiestilelist"></ul>
             </div>
             <div class="tilelist" id="categoryTileList">
-                <h3>Categories</h3>
+                <h2>Categories</h2>
                 <ul id="categorytilelist"></ul>
             </div>
             <div class="tilelist" id="videoTileList">
-                <h3>Videos</h3>
+                <h2>Videos</h2>
                 <ul id="videostilelist"></ul>
             </div>
             <div class="tilelist" id="imageTileList">
-                <h3>Images</h3>
+                <h2>Images</h2>
                 <ul id="imagestilelist"></ul>
             </div>
         </div>
