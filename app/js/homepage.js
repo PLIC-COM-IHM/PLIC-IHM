@@ -3,8 +3,6 @@ var projectList = null;
 function page_main() {
     console.debug('Trying to instanciate homepage...');
     dbGetAllCategories(hpInstantiateCategorie);
-
-    $('.tilelist li').click(tileClick);
 }
 
 function hpInstantiateCategorie(categories) {
@@ -60,7 +58,7 @@ function hpInstantiateData(projects) {
         if (projects[i].images != null && projects[i].images.length > 0)
         {
             var pid = 'p' + projects[i].id;
-            var htmlTile = '<li><a href="gallery.html?' + pid + '"><img width="128" height="128" id="' + pid + '" class="ituile" src="" alt="" /></a></li>';
+            var htmlTile = '<li><a href="project.html?' + pid + '"><img width="128" height="128" id="' + pid + '" class="ituile" src="" alt="" /></a></li>';
             $("#imageTileList").append(htmlTile);
         }
     }
@@ -87,17 +85,4 @@ function prevTitles()
     $('#categoryTileList').show(1000);
     $('#videoTileList').hide(1000);
     $('#imageTileList').hide(1000);
-}
-
-
-/* Navigation */
-function tileClick()
-{
-    alert('toto');
-    console.debug('Clicked on homepage tile');
-    parentId = $(this).parent().attr('id');
-    if (parentId == 'imageTileList')
-    {
-        window.location = 'project.html?' + $(this).attr('id');
-    }
 }

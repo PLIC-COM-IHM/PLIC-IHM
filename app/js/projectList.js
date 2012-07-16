@@ -18,14 +18,16 @@ function createPage(projectList)
     
     $('#resultList').empty();
     for (i=0; i<projectList.length; i++) {
+            id = 'p' + projectList[i].id;
             if (projectList[i].images.length > 0) {
                     image = '<img width="128" height="128" src="' + projectList[i].folder + 'media/images/' + projectList[i].images[0] + '" alt="" />';
-            } else {
+            }
+            else {
                     '<img src="" alt="" />';
             }
             title = '<strong>' + projectList[i].name + '</strong>';
             desc = '<em>' + projectList[i].shortDescription + '"</em>';
-            projectHtml = '<li>' + image + title + desc + '</li>';
+            projectHtml = '<li><a href="project.html?' + id + '">' + image + title + desc + '</a></li>';
             $('#resultList').append(projectHtml);
     }
 }

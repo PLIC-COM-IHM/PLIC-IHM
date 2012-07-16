@@ -5,6 +5,9 @@ function page_main() {
     dbGetProjectById(parseInt(projectId), createPage);
     
     $('.image').attr('id', 'p' + projectId);
+    $('.pres a').attr('href', '#?p' + projectId);
+    $('.image a').attr('href', 'gallery.html?p' + projectId);
+    $('.video a').attr('href', 'gallery.html?v' + projectId);
 }
 
 function createPage(p)

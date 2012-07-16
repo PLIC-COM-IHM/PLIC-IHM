@@ -14,7 +14,7 @@ html, body {height: 100%;}
 	-webkit-border-radius: 5px;	
 }
 
-#keyzone { clear:both; margin-top: -480px; font-size: 30px; border-top: 1px solid white; }
+#keyzone { margin-left: 74px; clear:both; margin-top: -480px; font-size: 30px; }
 	#keyzone .line { text-align: center; margin: auto; clear: both; }
 
 .key
