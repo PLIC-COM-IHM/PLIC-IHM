@@ -1,6 +1,7 @@
 function page_main()
 {
 	reloadResults();
+	stopLoading();
 }
 
 function addkey (text)
