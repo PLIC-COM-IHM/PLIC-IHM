@@ -1,10 +1,11 @@
-html, body {height: 100%;}
+html, body { height: 100%; }
 
-#wrap { min-height: -webkit-calc(100% - 100px); min-height: calc(100% - 114px); clear: both; margin-left: 74px; }
-#resultList { overflow:auto; padding-bottom: 480px; }
+#wrap { height: 330px; clear: both; }
+#resultList { height: 300px; overflow: scroll; margin-bottom: 10px; }
 
 #searchfield
 {
+	margin-top: 2px;
 	height: 56px;
 	width: 524px;
 	margin-left: 20px;
@@ -14,57 +15,37 @@ html, body {height: 100%;}
 	-webkit-border-radius: 5px;	
 }
 
-#keyzone { margin-left: 74px; clear:both; margin-top: -480px; font-size: 30px; }
-	#keyzone .line { text-align: center; margin: auto; clear: both; }
+#keyzone { clear:both; font-size: 30px; height: 288px; }
+	#keyzone .line { margin: auto; clear: both; }
+	
+#letters { float: left; width: 720px; }
+#numbers { float: right; width: 216px; }
 
 .key
 {
 	background-color: #24A2FF;
-	float : left;
+	float: left;
 	border: 1px solid black;
 	padding : 10px;
-	width : 50px;
-	height : 50px;
-	margin : 5px;
+	width: 48px;
+	height: 48px;
+	margin: 0 2px 2px 0;
+	text-align: center;
 	
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
-
 }
+
 .enterkey
 {
-	background-color: #24A2FF;
-	float : left;
-	border: 1px solid black;
-	padding : 10px;
-	width : 150px;
-	height : 50px;
-	margin : 5px;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;		
+	width : 120px;
+	
 }
 .spacekey
 {
-	background-color: #24A2FF;
-	float : left;
-	border: 1px solid black;
-	padding : 10px;
-	width : 400px;
-	height : 50px;
-	margin : 5px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;		
+	width : 408px;
 }
 .remkey
 {
-	background-color: #24A2FF;
-	float : left;
-	border: 1px solid black;
-	padding : 10px;
-	width : 100px;
-	height : 50px;
-	margin : 5px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;	
+	width : 120px;
 }

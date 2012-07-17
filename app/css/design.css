@@ -47,14 +47,14 @@ header { height: 114px; }
 
 /* Result list */
 #resultList { clear: both; margin-top: 40px; }
-    #resultList li { float: left; width: 266px; height: 132px; background-color: #24A2FF; margin: 0 2px 2px 0; padding: 2px; text-align: center; }
-    #resultList li a { display: block; width: 266px; height: 132px; }
+    #resultList li { float: left; width: 293px; height: 132px; background-color: #24A2FF; margin: 0 2px 2px 0; padding: 2px; text-align: center; }
+    #resultList li a { display: block; width: 293px; height: 132px; }
     #resultList li a:hover { background-color: #2AAAFF; }
     #resultList li img { float: left; padding-right: 3px; margin-right: 3px; border-right: 1px solid white; }
     #resultList li strong { display: block; }
 
 /* Gallery */
-#content .media { width : 100px; height : 100px; margin : 10px; }
+#gallery .media { width : 132px; height : 132px; margin: 0 2px 2px 0; }
 
 .quit { float : left; }
 	.quit .navig { width : 100px; height : 100px; }
