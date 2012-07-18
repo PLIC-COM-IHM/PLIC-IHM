@@ -61,3 +61,73 @@ header { height: 114px; }
 	
 .avatar { }
 .description { clear : left; }
+
+/* Medias */
+
+#dvid
+{
+	width: 100%;
+	height: 100%;
+
+}
+#vmedia
+{
+	width: 100%;
+	height: 100%;
+}
+#vquit
+{
+	position : absolute;
+	top: 5px;
+	right: 5px;
+	width : 100px;
+	height : 100px;
+}
+#imedia
+{
+	width: 84%;
+	height: 100%;
+	margin-left : 8%;
+}
+
+
+#mleft
+{
+	width: 8%;
+	height: 500px;
+	float : left;
+	position : absolute;
+	top: 5px;
+	left: 5px;
+}
+
+#mright
+{
+	position : absolute;
+	top: 5px;
+	right: 5px;
+	width: 8%;
+	height: 500px;
+	float: left;
+}
+
+.column
+{
+	width: 100%;
+	height: 100%;
+}
+
+#media 
+{
+	margin: auto;
+	width: auto;
+	height: 100%;
+}
+
+.mnav
+{
+	width: 80%;
+	margin-top : 45%;
+}
+
+
