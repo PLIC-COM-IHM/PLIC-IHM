@@ -24,6 +24,7 @@ function rotateBody()
 		$("body").css("-webkit-transform-origin", "50% 100%")
 		rotate = false;
 		
+		
 		// store state
 		eraseCookie("rotateBody");
 	}

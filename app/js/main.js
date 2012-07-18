@@ -1,13 +1,14 @@
 function showLoading() {
-    $('#loading').show();
-    $("#navbar").hide();
-    $("#content").hide();
+    $('#loading').hide();
+    //$('#loading').show();
+    //$("#navbar").hide();
+    //$("#content").hide();
 }
 
 function stopLoading() {
     $('#loading').hide();
-    $("#navbar").show();
-    $("#content").show();
+    //$("#navbar").show();
+    //$("#content").show();
 }
 
 $(document).ready(function() {
@@ -15,6 +16,10 @@ $(document).ready(function() {
     showLoading();
     dbInit();
     page_main();
+    
+    $("#content").css("display", "none");
+
+    $("#content").slideDown(1000);
 });
 
 

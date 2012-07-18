@@ -57,7 +57,9 @@ function displayVideo()
 	videos = getElementsByClass("vtuile", "video");
 	for (i = 0 ; i < videos.length; i++)
 		changeOffset(videos[i]);
-	timer = setTimeout(displayVideo, VDELAY );
+		
+	if (videos.length > 0)
+		timer = setTimeout(displayVideo, VDELAY);
 }
 
 function changeOffset(video)

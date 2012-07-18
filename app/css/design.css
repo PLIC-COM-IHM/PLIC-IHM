@@ -38,7 +38,7 @@ header { height: 114px; }
 .project_main { margin: auto; text-align: center; }
 #projecttiles {  margin-top: 75px; }
     #projecttiles .projecttile { background-color: #24A2FF; width: 177px; height: 177px; border: groove 1px black; margin: 0 10px 10px 0; float:left; }
-        #projecttiles .projecttile a { display: block; width: 177px; height: 177px; }
+        #projecttiles .projecttile a { display: block; width: 177px; height: 177px; overflow: hidden; }
         #projecttiles .projecttile a:hover { background-color: #2AAAFF;  }
         #projecttiles .projecttile strong { display: block;  }
         #projecttiles .projecttile p { padding: 5px; }
@@ -48,7 +48,7 @@ header { height: 114px; }
 /* Result list */
 #resultList { clear: both; margin-top: 40px; }
     #resultList li { float: left; width: 293px; height: 132px; background-color: #24A2FF; margin: 0 2px 2px 0; padding: 2px; text-align: center; }
-    #resultList li a { display: block; width: 293px; height: 132px; }
+    #resultList li a { display: block; width: 293px; height: 132px; overflow: hidden; }
     #resultList li a:hover { background-color: #2AAAFF; }
     #resultList li img { float: left; padding-right: 3px; margin-right: 3px; border-right: 1px solid white; }
     #resultList li strong { display: block; }

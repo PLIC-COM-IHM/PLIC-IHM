@@ -49,16 +49,28 @@ function hpInstantiateData(projects) {
     // save list
     projectList = projects;
     
-    $("#videostilelist").append('<li><video class="vtuile" width="128" height="128" loop src="projects/plic-comihm-2013/media/videos/IHM.mp4"></li>');
-    $("#videostilelist").append('<li><video class="vtuile" width="128" height="128" loop src="projects/plic-comihm-2013/media/videos/plic_social_network.mp4"></li>');
+    console.debug('Instanciate home page videos');
+    // Create images tiles
+    for (i=0; i<projects.length; i++) {
+        if (projects[i].videoPath != null)
+        {
+            pid = 'p' + projects[i].id;
+            video = '<video class="vtuile" width="128" height="128" loop src="' + projects[i].folder + 'media/videos/' + projects[i].videoPath + '">';
+            htmlTile = '<li><a href="project.html?' + pid + '">'+ video + '</a></li>';
+            $("#videoTileList").append(htmlTile);
+            
+            console.debug(htmlTile);
+        }
+    }
+    
     
     console.debug('Instanciate home page images');
     // Create images tiles
     for (i=0; i<projects.length; i++) {
         if (projects[i].images != null && projects[i].images.length > 0)
         {
-            var pid = 'p' + projects[i].id;
-            var htmlTile = '<li><a href="project.html?' + pid + '"><img width="128" height="128" id="' + pid + '" class="ituile" src="" alt="" /></a></li>';
+            pid = 'p' + projects[i].id;
+            htmlTile = '<li><a href="project.html?' + pid + '"><img width="128" height="128" id="' + pid + '" class="ituile" src="" alt="" /></a></li>';
             $("#imageTileList").append(htmlTile);
         }
     }
