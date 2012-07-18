@@ -58,8 +58,6 @@ function hpInstantiateData(projects) {
             video = '<video class="vtuile" width="128" height="128" loop src="' + projects[i].folder + 'media/videos/' + projects[i].videoPath + '">';
             htmlTile = '<li><a href="project.html?' + pid + '">'+ video + '</a></li>';
             $("#videoTileList").append(htmlTile);
-            
-            console.debug(htmlTile);
         }
     }
     

@@ -4,30 +4,29 @@
         <title>MTI</title>
         <link rel="stylesheet" type="text/css" href="css/design.css">
         <script language="JavaScript" src="js/jquery.js"></script>
-        <script language="JavaScript" src="js/media.js"></script>
+        <script language="JavaScript" src="js/database.js"></script>
+        <script language="JavaScript" src="js/images.js"></script>
+        <script language="JavaScript" src="js/navig.js"></script>
+        <script language="JavaScript" src="js/main.js"></script>
     </head>
     <body style="background: black;">
+	<div id="vquit" >
+	    <img src="images/rotate.png" alt="back" onclick="javascript:history.back()" />
+	</div>
 	
-		<div id="mleft" onclick="ileft()">
-			<p class="column">
-				<img class="mnav" src="images/arrowleft.png" alt="left"/>
-			</p>
-		</div>
-		
-		<div id="imedia" onclick="imedia()"><p class="column">
-			<p style="text-align:center;">
-				<img id="media" src="projects\plic-adobe-2013\media\images\Logo_Adobe.jpeg" alt="media"/>
-			</p>
-		</div>
-		
-		<div id="mright" onclick="iright()">
-			<p class="column">
-				<img class="mnav" src="images/arrowright.png" alt="right"/>
-			</p>
-		</div>
-
-		<div id="vquit" ><img src="images/rotate.png" alt="back" onclick="back()" />
-		</div>
-		
-	</body>
+	<div id="mediaNavbar">
+	    <div id="arrowleft">
+		<img src="images/arrowleft.png" alt="Previous" onclick="ileft()" height="50" width="50" />
+	    </div>
+	    <div id="arrowright">
+		<img src="images/arrowright.png" alt="Next" onclick="iright()" height="50" width="50" />
+	    </div>            
+	</div> <!-- mediaNavbar -->
+	
+	<div id="imedia" onclick="imedia()">
+	    <p style="text-align:center;">
+		<img id="media" src="" alt="media" style="max-height:700px"; max-width:1000px;" />
+	    </p>
+	</div>
+    </body>
 </html>

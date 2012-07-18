@@ -72,10 +72,11 @@ function changeOffset(video)
 function displayPictures()
 {
 	$('.ituile').each(function(index) {
-		changePicture($(this));
+		if (Math.floor(Math.random() * 4) == 0)
+			changePicture($(this));
 	});
 
-	timer = setTimeout(displayPictures, PDELAY + Math.floor(Math.random() * 1000));
+	timer = setTimeout(displayPictures, PDELAY);
 }
 
 //

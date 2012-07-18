@@ -2,21 +2,23 @@
 <html>
     <head>
         <title>MTI</title>
-        <script language="JavaScript" src="js/jquery.js"></script>
         <link rel="stylesheet" type="text/css" href="css/design.css">
-		<script language="JavaScript" src="js/media.js"></script>
+        <script language="JavaScript" src="js/jquery.js"></script>
+        <script language="JavaScript" src="js/database.js"></script>
+        <script language="JavaScript" src="js/video.js"></script>
+        <script language="JavaScript" src="js/navig.js"></script>
+        <script language="JavaScript" src="js/main.js"></script>
     </head>
     <body style="background: black;">
-		<!-- Vidéo-->
-		<div id="dvid">
-			<video id="vmedia" loop  src="projects\plic-comihm-2013\media\videos\IHM.mp4" onclick="videoread()" <!--autoplay-->>
-				Vidéo indisponible.
-			</video>
-		</div>
-		
-		<!-- Bouton de sortie-->
-		<div id="vquit">
-			<img src="images/rotate.png" alt="back" onclick="back()" />
-		</div>
+	<div id="vquit" >
+	    <img src="images/rotate.png" alt="back" onclick="javascript:history.back()" />
+	</div>
+	
+	<!-- Video-->
+	<div id="dvid">
+	    <video id="vmedia" src="" onclick="videoread()" autoplay>
+		VidÃ©o indisponible.
+	    </video>
+	</div>
     </body>
 </html>
