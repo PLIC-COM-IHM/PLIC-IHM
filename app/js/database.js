@@ -513,9 +513,10 @@ function dbGetProjectById(projectId, onFoundCallback) {
     var db = mtiapp.webdb.db;
     db.transaction(function(tx) {
         // creating query with all join
-        var q = "SELECT *  FROM project " +
+        var q = "SELECT * FROM project " +
                 "LEFT JOIN image ON project.id = image.projectId " +
                 "LEFT JOIN video ON project.id = video.projectId " +
+                "LEFT JOIN member ON project.id = member.projectId " +
                 "WHERE project.id = " + projectId;
         tx.executeSql(q, [],
             function(tx, rs) {
@@ -560,7 +561,8 @@ function dbSearch(searchKey, onFoundCallback) {
         q += "LEFT JOIN technology ON projectTechnology.technologyId = technology.technoId ";
         q += "LEFT JOIN projectCategory ON project.id = projectCategory.projectId ";
         q += "LEFT JOIN category ON projectCategory.categoryId = category.categoryId ";
-        q +=  "WHERE project.name LIKE '%" + searchKey + "%'";
+        q +=  "WHERE project.name LIKE '%" + searchKey + "%' OR ";
+        q +=  " project.description LIKE '%" + searchKey + "%'";
         tx.executeSql(q, [],
             function(tx, rs) {
                 var results = new Array();

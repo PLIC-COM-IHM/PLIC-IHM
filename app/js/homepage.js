@@ -2,42 +2,49 @@ var projectList = null;
 
 function page_main() {
     console.debug('Trying to instanciate homepage...');
-    dbGetAllCategories(hpInstantiateCategorie);
+    dbGetAllTechnologies(hpInstantiateTechnologies);
 }
 
-function hpInstantiateCategorie(categories) {
-    // db filled ?
-    if (categories.length == 0) { window.setTimeout(page_main, 500); return; }
+function hpInstantiateTechnologies(technologies) {
+    // Is database ready ?
+    if (technologies.length == 0) { window.setTimeout(page_main, 500); return; }
 
     stopLoading();
     $('#arrowleft').hide();
     $('#videoTileList').hide();
     $('#imageTileList').hide();
+    
+    console.debug('Instanciate home page categories');
+    
+    // For eatch technologoie, we are going to generate a tile
+    for (i = 0; i < technologies.length; i++) {
+        id = 't' + technologies[i].technoId;
+        imagePath = 'data/technologies/' + technologies[i].name + '.png';
+        nbProjects = technologies[i].nbProjects + (technologies[i].nbProjects <= 1 ? ' projet' : ' projets');
+        htmlTile = '<div class="tile flippable" id="' + id + '">' + 
+                        '<div><img src="' + imagePath + '" alt="' + capitaliseFirstLetter(technologies[i].name) + '" /></div>' + 
+                        '<p><strong>' + capitaliseFirstLetter(technologies[i].name) + '</strong><em>' + nbProjects + '</em></p>' +
+                    '</div>';
+        $('#technologiesTileList').append(htmlTile);
+    }
+    
+    
+    // Get technologies
+    dbGetAllCategories(hpInstantiateCategorie);
+}
 
+function hpInstantiateCategorie(categories) {
     console.debug('Instanciate home page categories');
     
     for (i=0; i<categories.length; i++) {
-        var id = 'c' + categories[i].categoryId;
-        var nbProjects = categories[i].nbProjects + (categories[i].nbProjects <= 1 ? ' projet' : ' projets');
-        var htmlTile = '<a data-transition="slide" href="projectList.html?' + id + '"><li width="128" height="128" id="' + id + '"><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></a></li>';
-        $("#categorytilelist").append(htmlTile);
+        id = 'c' + categories[i].categoryId;
+        nbProjects = categories[i].nbProjects + (categories[i].nbProjects <= 1 ? ' projet' : ' projets');
+        htmlTile = '<a data-transition="slide" href="projectList.html?' + id + '"><li width="128" height="128" id="' + id + '"><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></a></li>';
+        htmlTile = '<div class="tile" id="' + id + '">' + 
+                '<p><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></p>' +
+            '</div>';
+        $("#categoryTileList").append(htmlTile);
     }
-    
-    // Get technologies
-    dbGetAllTechnologies(hpInstantiateTechnologies);
-}
-
-function hpInstantiateTechnologies(technologies) {
-    console.debug('Instanciate home page categories');
-    
-    for (i=0; i<technologies.length; i++) {
-        var id = 't' + technologies[i].technoId;
-        var imagePath = 'data/technologies/' + technologies[i].name + '.png';
-        var nbProjects = technologies[i].nbProjects + (technologies[i].nbProjects <= 1 ? ' projet' : ' projets');
-        var htmlTile = '<a href="projectList.html?' + id + '"><li id="' + id + '"><img src="' + imagePath + '" alt="" /><em>' + nbProjects + '</em></a></li>'
-        $('#technologiestilelist').append(htmlTile);
-    }
-    
     
     // Get technologies
     dbGetAllData(hpInstantiateData);
@@ -61,7 +68,6 @@ function hpInstantiateData(projects) {
         }
     }
     
-    
     console.debug('Instanciate home page images');
     // Create images tiles
     for (i=0; i<projects.length; i++) {
@@ -72,6 +78,15 @@ function hpInstantiateData(projects) {
             $("#imageTileList").append(htmlTile);
         }
     }
+    
+    animateTiles();
+    bindClicks();
+}
+
+function bindClicks() {
+    $('.tile').bind("click",function(){
+	window.location = 'projectList.html?' + $(this).attr('id');
+    });
 }
 
 
@@ -80,10 +95,12 @@ function nextTitles()
 {
     $('#arrowleft').show();
     $('#arrowright').hide();
-    $('#technologyTileList').hide(1000);
-    $('#categoryTileList').hide(1000);
+    $('#technologyTileList').hide(500);
+    $('#categoryTileList').hide(500);
     $('#videoTileList').show(1000);
     $('#imageTileList').show(1000);
+    
+    flipAvailable = false;
 }
 
 
@@ -93,6 +110,15 @@ function prevTitles()
     $('#arrowright').show();
     $('#technologyTileList').show(1000);
     $('#categoryTileList').show(1000);
-    $('#videoTileList').hide(1000);
-    $('#imageTileList').hide(1000);
+    $('#videoTileList').hide(500);
+    $('#imageTileList').hide(500);
+    
+    flipAvailable = true;
+}
+
+
+
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }

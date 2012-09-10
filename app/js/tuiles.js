@@ -1,5 +1,5 @@
 /*
-** Class vidéo pour tuiles vidéos
+** Class vidÃˆo pour tuiles vidÃˆos
 */
 
 
@@ -12,7 +12,9 @@ VDELAY = 2000; //ms
 VOFFSET = 6; //s
 
 // delay pictures
-PDELAY = 3000; //ms
+PDELAY = 2000; //ms
+
+var first = true;
 
 
 /*
@@ -72,10 +74,11 @@ function changeOffset(video)
 function displayPictures()
 {
 	$('.ituile').each(function(index) {
-		if (Math.floor(Math.random() * 4) == 0)
+		if (first || Math.floor(Math.random() * 4) == 0)
 			changePicture($(this));
 	});
 
+	first = false;
 	timer = setTimeout(displayPictures, PDELAY);
 }
 
@@ -90,7 +93,7 @@ function changePicture(img)
 		imgUrl = project.folder + 'media/images/' + project.images[random];
 		img.fadeOut(100);
 		img.attr("src", imgUrl);
-		img.fadeIn(300);
+		img.fadeIn(800);
 	}
 }
 

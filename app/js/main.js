@@ -1,14 +1,12 @@
 function showLoading() {
     $('#loading').hide();
     //$('#loading').show();
-    //$("#navbar").hide();
-    //$("#content").hide();
+    $("#content").hide();
 }
 
 function stopLoading() {
     $('#loading').hide();
-    //$("#navbar").show();
-    //$("#content").show();
+    $("#content").show();//"file:///.file/id=6562758.29468221);
 }
 
 $(document).ready(function() {
@@ -17,9 +15,9 @@ $(document).ready(function() {
     dbInit();
     page_main();
     
-    $("#content").css("display", "none");
+    //$("#content").css("display", "none");
 
-    $("#content").slideDown(1000);
+    //$("#content").slideDown(1000);
 });
 
 
