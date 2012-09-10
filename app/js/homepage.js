@@ -25,7 +25,7 @@ function hpInstantiateTechnologies(technologies) {
                         '<div><img src="' + imagePath + '" alt="' + capitaliseFirstLetter(technologies[i].name) + '" /></div>' + 
                         '<p><strong>' + capitaliseFirstLetter(technologies[i].name) + '</strong><em>' + nbProjects + '</em></p>' +
                     '</div>';
-        $('#technologiesTileList').append(htmlTile);
+        $('#technologyTileList').append(htmlTile);
     }
     
     
@@ -39,10 +39,9 @@ function hpInstantiateCategorie(categories) {
     for (i=0; i<categories.length; i++) {
         id = 'c' + categories[i].categoryId;
         nbProjects = categories[i].nbProjects + (categories[i].nbProjects <= 1 ? ' projet' : ' projets');
-        htmlTile = '<a data-transition="slide" href="projectList.html?' + id + '"><li width="128" height="128" id="' + id + '"><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></a></li>';
         htmlTile = '<div class="tile" id="' + id + '">' + 
-                '<p><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></p>' +
-            '</div>';
+                        '<p><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></p>' +
+                    '</div>';
         $("#categoryTileList").append(htmlTile);
     }
     
@@ -61,9 +60,12 @@ function hpInstantiateData(projects) {
     for (i=0; i<projects.length; i++) {
         if (projects[i].videoPath != null)
         {
-            pid = 'p' + projects[i].id;
-            video = '<video class="vtuile" width="128" height="128" loop src="' + projects[i].folder + 'media/videos/' + projects[i].videoPath + '">';
-            htmlTile = '<li><a href="project.html?' + pid + '">'+ video + '</a></li>';
+            id = 'p' + projects[i].id;
+            video = '<video class="vtuile" width="160" height="160" loop src="' + projects[i].folder + 'media/videos/' + projects[i].videoPath + '">';
+            htmlTile = '<div class="tile video" id="' + id + '">' +
+                            '<div>' + video + '</div>' +
+                            '<p><strong>' + projects[i].name + '</strong></p>' +
+                        '</div>';
             $("#videoTileList").append(htmlTile);
         }
     }
@@ -73,14 +75,21 @@ function hpInstantiateData(projects) {
     for (i=0; i<projects.length; i++) {
         if (projects[i].images != null && projects[i].images.length > 0)
         {
-            pid = 'p' + projects[i].id;
-            htmlTile = '<li><a href="project.html?' + pid + '"><img width="128" height="128" id="' + pid + '" class="ituile" src="" alt="" /></a></li>';
+            id = 'p' + projects[i].id;
+            imagePath = projects[i].folder + 'media/images/' + projects[i].images[0];
+            htmlTile = '<div class="tile image" id="' + id + '">' + 
+                        '<div><img style="max-width:128px;max-height:128px;" src="' + imagePath + '" alt="' + projects[i].name + '" /></div>' + 
+                        '<p><strong>' + projects[i].name + '</strong></p>' +
+                    '</div>';
             $("#imageTileList").append(htmlTile);
         }
     }
     
     animateTiles();
     bindClicks();
+    
+    flipAvailable = true;
+    changePictureAvailable = false;
 }
 
 function bindClicks() {
@@ -101,6 +110,7 @@ function nextTitles()
     $('#imageTileList').show(1000);
     
     flipAvailable = false;
+    changePictureAvailable = true;
 }
 
 
@@ -114,6 +124,7 @@ function prevTitles()
     $('#imageTileList').hide(500);
     
     flipAvailable = true;
+    changePictureAvailable = false;
 }
 
 

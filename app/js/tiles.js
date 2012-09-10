@@ -1,8 +1,10 @@
 /* Tiles animation core */
 var flipAvailable = false;
+var changePictureAvailable = false;
 
 function animateTiles() {
     animateFlippableTiles();
+    animateImageTiles();
 }
 
 function animateFlippableTiles() {
@@ -51,4 +53,75 @@ function animateFlippableTiles() {
     });
     
     flipAvailable = true;
+}
+
+
+function animateImageTiles() {
+    // add trigger
+    $('.tile.image').bind("changePicture",function() {
+        // $(this) point to the clicked .sponsorFlip element (caching it in elem for speed):
+        var elem = $(this);
+        
+        if (changePictureAvailable && projectList != null) {
+            
+            // get project
+            projectId = parseInt(elem.attr("id").substring(1));
+            project = getProjectById(projectId);
+            
+            // get next picture
+            if (project) {
+                n = (parseInt(elem.data('displayPictureId')) + 1) % project.images.length;
+                imgUrl = project.folder + 'media/images/' + project.images[n];
+                
+                elem.data('displayPictureId', n);    
+
+                // transition
+                //elem.fadeOut(100);
+                elem.children('div').children('img').attr("src", imgUrl);
+                //elem.fadeIn(800);
+            
+                directions = new Array('tb', 'bt', 'lr', 'rl');
+            
+                elem.flip({
+                        direction: directions[Math.floor(Math.random() * 4)],
+                        speed: 350,
+                        onBefore: function(){
+                                // Insert the contents of the .sponsorData div (hidden from view with display:none)
+                                // into the clicked .sponsorFlip div before the flipping animation starts:
+                                
+                                elem.html(elem.html());
+                        }
+                });
+            }
+        }
+        
+        // set timer
+        setTimeout(function () { elem.trigger('changePicture'); }, 4000 + Math.floor(Math.random() * 6000));
+    });
+    
+    $('.tile.image').each(function() {
+        $(this).data('displayPictureId', 0);
+	$(this).trigger('changePicture');
+    });
+    
+    changePictureAvailable = true;
+}
+
+
+
+
+function getProjectById(id)
+{
+	if (projectList == null)
+		return null;
+
+	for (i=0; i<projectList.length; ++i)
+	{
+		if (projectList[i].id == id)
+		{
+			return projectList[i];
+		}
+	}
+	
+	return null;
 }
