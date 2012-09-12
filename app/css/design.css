@@ -2,8 +2,10 @@
 * { padding:0px; margin:0px; }
 ul { }
 li { list-style: none; }
-h1 { padding:0; margin:0; font-size : 32px; margin-bottom : 10px; }
-h2, h3 { padding:0; margin:0; font-size:22px; }
+h1 { font-size : 48px; margin-bottom : 10px; }
+h2, h3 { font-size:22px; }
+h5 { font-size:22px; font-weight: normal; }
+h6 { font-size:18px; margin-bottom: 10px; font-weight: normal; font-style: italic; }
 strong { font-size:18px; text-align: center; padding: 10px; }
 a { text-decoration: none; color: #ffffff; }
 body { margin: 10px 10px 0 0; font-size:16px; font-family:droid sans; color:#ffffff; background: #000000 url(../images/wall2.png) no-repeat; background-position: center center ; }
@@ -26,17 +28,24 @@ header { height: 114px; }
 
 /* Tile */
 .tilelist { width: 50%; float: left;}
-    .tilelist li { width: 132px; height: 132px; background-color: #24A2FF; float: left; margin: 0 5px 5px 0; padding: 2px; }
-    .tilelist li a { display: block; width: 132px; height: 132px; }
-    .tilelist li a:hover { background-color: #2AAAFF; }
-    .tilelist li strong { display: block; }
-    .tilelist li img { margin: 2px; }
-    .tilelist li em { visibility:hidden; }
+.tile { width:180px; height:180px; float:left; margin:4px; position:relative; cursor:pointer; background-color: #24A2FF;}
+    .tile:hover{ background-color: #2AAAFF; }
+  
+    .title div { position:absolute; left:0; top:0; width:100%; height:100%; border:1px solid #ddd; background-color:#24A2FF; }
+    .tile img { position:absolute; top:50%; left:50%; margin:-70px 0 0 -70px; }
+    .tile video { margin: 10px; }
+    
+    .tile.flippable p { display: none; } 
+    .tile.image p { display: none; } 
+    .tile.video p { display: none; } 
+    .tile strong { display: block; }
+    .tile em {  position:absolute; left:115px; top:152px; } 
+    
     
 /* Project page */
 #projectHeader { display: block; }
 .project_main { margin: auto; text-align: center; }
-#projecttiles {  margin-top: 75px; }
+#projecttiles { margin-top: 75px; }
     #projecttiles .projecttile { background-color: #24A2FF; width: 177px; height: 177px; border: groove 1px black; margin: 0 10px 10px 0; float:left; }
         #projecttiles .projecttile a { display: block; width: 177px; height: 177px; overflow: hidden; }
         #projecttiles .projecttile a:hover { background-color: #2AAAFF;  }
@@ -54,7 +63,7 @@ header { height: 114px; }
     #resultList li strong { display: block; }
 
 /* Gallery */
-#gallery .media { width : 132px; height : 132px; margin: 0 2px 2px 0; }
+#gallery .media { width : 132px; height : 132px; margin: 0 2px 2px 0; padding: 2px; }
 
 .quit { float : left; }
 	.quit .navig { width : 100px; height : 100px; }
@@ -62,72 +71,7 @@ header { height: 114px; }
 .avatar { }
 .description { clear : left; }
 
-/* Medias */
-
-#dvid
-{
-	width: 100%;
-	height: 100%;
-
-}
-#vmedia
-{
-	width: 100%;
-	height: 100%;
-}
-#vquit
-{
-	position : absolute;
-	top: 5px;
-	right: 5px;
-	width : 100px;
-	height : 100px;
-}
-#imedia
-{
-	width: 84%;
-	height: 100%;
-	margin-left : 8%;
-}
-
-
-#mleft
-{
-	width: 8%;
-	height: 500px;
-	float : left;
-	position : absolute;
-	top: 5px;
-	left: 5px;
-}
-
-#mright
-{
-	position : absolute;
-	top: 5px;
-	right: 5px;
-	width: 8%;
-	height: 500px;
-	float: left;
-}
-
-.column
-{
-	width: 100%;
-	height: 100%;
-}
-
-#media 
-{
-	margin: auto;
-	width: auto;
-	height: 100%;
-}
-
-.mnav
-{
-	width: 80%;
-	margin-top : 45%;
-}
-
-
+/* Media */
+#mediaNavbar { clear: both; }
+#vquit { float: right; margin-bottom: 50px; }
+#dvid { clear: both; margin-top: 100px; text-align: center; }x

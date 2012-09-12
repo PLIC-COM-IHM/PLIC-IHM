@@ -3,10 +3,47 @@ var flipAvailable = false;
 var changePictureAvailable = false;
 
 function animateTiles() {
+    animateVideo();
     animateFlippableTiles();
     animateImageTiles();
 }
 
+
+/* Video */
+VDELAY = 2000; //ms
+VOFFSET = 6; //s
+
+function getElementsByClass(classe,tag)
+{
+     var divs = document.getElementsByTagName(tag);
+     var resultats = new Array();
+     for(var i=0; i<divs.length; i++)
+          if(divs[i].className == classe)
+               resultats.push(divs[i]);
+     return resultats;
+}
+
+function animateVideo()
+{
+    setTimeout(displayVideo, 1000);
+}
+
+function displayVideo()
+{
+	videos = getElementsByClass("vtuile", "video");
+	for (i = 0 ; i < videos.length; i++)
+		changeOffset(videos[i]);
+		
+	if (videos.length > 0)
+		timer = setTimeout(displayVideo, VDELAY);
+}
+
+function changeOffset(video)
+{
+	video.currentTime = video.currentTime + VOFFSET;
+}
+
+/* Flipping tiles */
 function animateFlippableTiles() {
     // add trigger
     $('.tile.flippable').bind("flip",function() {

@@ -14,7 +14,7 @@ function hpInstantiateTechnologies(technologies) {
     $('#videoTileList').hide();
     $('#imageTileList').hide();
     
-    console.debug('Instanciate home page categories');
+    console.debug('Instanciate home page technologies');
     
     // For eatch technologoie, we are going to generate a tile
     for (i = 0; i < technologies.length; i++) {
@@ -50,8 +50,6 @@ function hpInstantiateCategorie(categories) {
 }
 
 function hpInstantiateData(projects) {
-    console.debug('Instanciate home page videos');
-    
     // save list
     projectList = projects;
     

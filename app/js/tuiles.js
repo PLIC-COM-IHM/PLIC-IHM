@@ -26,9 +26,9 @@ $(document).ready(
 	{
 		var timer = null;
 		
-		timer = setTimeout(displayPictures,1000);
+		//timer = setTimeout(displayPictures,1000);
 		timer = setTimeout(displayUniPictures,1000);
-		timer = setTimeout(displayVideo, 1000);
+		//timer = setTimeout(displayVideo, 1000);
 	}
 );
 
