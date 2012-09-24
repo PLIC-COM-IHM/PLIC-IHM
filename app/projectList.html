@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MTI</title>
+	<link rel="stylesheet" href="css/design.css" type="text/css" />
+	<link rel="stylesheet" href="css/keyboard.css" type="text/css" />
+        <script language="JavaScript" src="js/jquery.js"></script>
+        <script language="JavaScript" src="js/database.js"></script>
+        <script language="JavaScript" src="js/parseprojects.js"></script>
+	<script type="text/javascript"  src="js/navig.js"></script>
+	<script type="text/javascript"  src="js/projectList.js"></script>
+	<script type="text/javascript"  src="js/main.js"></script>
+    </head>
+    <body>
+        <header>
+	    <img id="previousButton" src="images/arrowleft.png" alt="Previous" onclick="javascript:history.back()" height="64" width="64" />
+            <img id="logo" src="images/logo.png" alt="MTI" />
+            <div id="buttonbar">
+                <ul>
+                    <li><img src="images/home.png" alt="Home" onclick="javascript:location.href='homepage.html';" height="64" width="64" /></li>
+                    <li><img src="images/rotate.png" alt="Rotate" onclick="rotateBody()" height="64" width="64" /></li>
+                    <li><img src="images/search.png" alt="Search" onclick="javascript:location.href='search.html';" height="64" width="64" /></li>
+                </ul>
+            </div> <!-- Buttonbar -->
+        </header>
+	
+	<div id="content">
+	    <ul id="resultList"></ul>
+	</div>
+    </body>
+</html>

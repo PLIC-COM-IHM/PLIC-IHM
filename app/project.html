@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MTI</title>
+        <link rel="stylesheet" type="text/css" href="css/design.css">
+        <script language="JavaScript" src="js/jquery.js"></script>
+        <script language="JavaScript" src="js/database.js"></script>
+        <script language="JavaScript" src="js/parseprojects.js"></script>
+        <script type="text/javascript" src="js/tuiles.js"></script>
+        <script language="JavaScript" src="js/project.js"></script>
+        <script type="text/javascript"  src="js/navig.js"></script>
+        <script language="JavaScript" src="js/main.js"></script>
+    </head>
+    <body>
+        <header>
+            <img id="previousButton" src="images/arrowleft.png" alt="Previous" onclick="javascript:history.back()" height="64" width="64" />
+            <img id="logo" src="images/logo.png" alt="MTI" />
+            <div id="buttonbar">
+                <ul>
+                    <li><img src="images/home.png" alt="Home" onclick="javascript:location.href='homepage.html';" height="64" width="64" /></li>
+                    <li><img src="images/rotate.png" alt="Rotate" onclick="rotateBody()" height="64" width="64" /></li>
+                    <li><img src="images/search.png" alt="Search" onclick="javascript:location.href='search.html';" height="64" width="64" /></li>
+                </ul>
+            </div> <!-- Buttonbar -->
+        </header>
+        
+        <img id="loading" src="images/loading.gif" alt="Loading..."/>
+        <div id="content">
+            <img id="projectHeader" src="" alt="" />
+            <h1></h1>
+            <h5></h5>
+            <h6></h6>
+            <p style="font-size: 18px"> 
+            </p>
+            <div id="projecttiles">
+                <div class="projecttile video"><a href="#"><strong>Vidéos</strong><video class="vtuile" width="132" height="132" loop src=""></a></div>
+                <div class="projecttile image"><a href="#"><strong>Photos</strong><img width="128" height="128" class="iunituile" src="" alt="" /></a></div>
+            </ul>
+        </div>
+    </body>
+</html>

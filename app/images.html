@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MTI</title>
+        <link rel="stylesheet" type="text/css" href="css/design.css">
+        <script language="JavaScript" src="js/jquery.js"></script>
+        <script language="JavaScript" src="js/database.js"></script>
+        <script language="JavaScript" src="js/images.js"></script>
+        <script language="JavaScript" src="js/navig.js"></script>
+        <script language="JavaScript" src="js/main.js"></script>
+    </head>
+    <body style="background: black;">
+	<div id="vquit" >
+	    <img src="images/close.png" alt="back" height="50" width="50" onclick="javascript:history.back()" />
+	</div>
+	
+	<div id="mediaNavbar">
+	    <div id="arrowleft">
+		<img src="images/arrowleft.png" alt="Previous" onclick="ileft()" height="50" width="50" />
+	    </div>
+	    <div id="arrowright">
+		<img src="images/arrowright.png" alt="Next" onclick="iright()" height="50" width="50" />
+	    </div>            
+	</div> <!-- mediaNavbar -->
+	
+	<div id="imedia" onclick="imedia()">
+	    <p style="text-align:center;">
+		<img id="media" src="" alt="media" style="max-height:600px; max-width:800px;" />
+	    </p>
+	</div>
+    </body>
+</html>
