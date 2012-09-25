@@ -46,7 +46,7 @@ function changeOffset(video)
 /* Flipping tiles */
 function animateFlippableTiles() {
     // add trigger
-    $('.tile.flippable').bind("flip",function() {
+    $('.tile.flippable div').bind("flip",function() {
         // $(this) point to the clicked .sponsorFlip element (caching it in elem for speed):
         var elem = $(this);
             
@@ -69,10 +69,9 @@ function animateFlippableTiles() {
                         direction:'lr',
                         speed: 350,
                         onBefore: function(){
-                                // Insert the contents of the .sponsorData div (hidden from view with display:none)
-                                // into the clicked .sponsorFlip div before the flipping animation starts:
-                                
-                                elem.html(elem.children('p').html());
+                                // Insert the contents of the p (hidden from view with display:none)
+                                // into the selected .tile div before the flipping animation starts:
+				elem.html(elem.siblings('p').html());
                         }
                 });
                 
@@ -82,10 +81,10 @@ function animateFlippableTiles() {
         }
         
         // set timer
-        setTimeout(function () { elem.trigger('flip'); }, 4000 + Math.floor(Math.random() * 6000));
+        setTimeout(function () { elem.trigger('flip'); }, 1000 + Math.floor(Math.random() * 6000));
     });
     
-    $('.tile.flippable').each(function() {
+    $('.tile.flippable div').each(function() {
 	$(this).trigger('flip');
     });
     

@@ -2,6 +2,9 @@ var rotate = false;
 
 function rotateBody()
 {
+	//TODO
+	return;
+
 	if (rotate == false)
 	{
 		$("body").css("-webkit-transform", "translate(00px) rotate(180deg)")
@@ -33,6 +36,9 @@ function rotateBody()
 
 function initRotate()
 {
+	// TODO
+	return;
+	
 	rotate = readCookie("rotateBody") == "true";
 	if (rotate)
 	{
