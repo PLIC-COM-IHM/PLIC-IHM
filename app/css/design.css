@@ -28,10 +28,10 @@ header { height: 114px; }
 
 /* Tile */
 .tilelist { width: 50%; float: left;}
-.tile { width:180px; height:180px; float:left; margin:4px; position:relative; cursor:pointer; background-color: #24A2FF;}
+.tile { width:180px; height:180px; float:left; margin:4px; position:relative; cursor:pointer; }
     .tile:hover{ background-color: #2AAAFF; }
   
-    .title div { position:absolute; left:0; top:0; width:100%; height:100%; border:1px solid #ddd; background-color:#24A2FF; }
+    .tile div { position:absolute; left:0; top:0; width:100%; height:100%; background-color:#24A2FF; }
     .tile img { position:absolute; top:50%; left:50%; margin:-70px 0 0 -70px; }
     .tile video { margin: 10px; }
     
@@ -39,7 +39,7 @@ header { height: 114px; }
     .tile.image p { display: none; } 
     .tile.video p { display: none; } 
     .tile strong { display: block; }
-    .tile em {  position:absolute; left:115px; top:152px; } 
+    .tile em { position:absolute; left:115px; top:152px; } 
     
     
 /* Project page */

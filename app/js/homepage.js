@@ -22,7 +22,7 @@ function hpInstantiateTechnologies(technologies) {
         imagePath = 'data/technologies/' + technologies[i].name + '.png';
         nbProjects = technologies[i].nbProjects + (technologies[i].nbProjects <= 1 ? ' projet' : ' projets');
         htmlTile = '<div class="tile flippable" id="' + id + '">' + 
-                        '<div><img src="' + imagePath + '" alt="' + capitaliseFirstLetter(technologies[i].name) + '" /></div>' + 
+                        '<div class="flip"><img src="' + imagePath + '" alt="' + capitaliseFirstLetter(technologies[i].name) + '" /></div>' + 
                         '<p><strong>' + capitaliseFirstLetter(technologies[i].name) + '</strong><em>' + nbProjects + '</em></p>' +
                     '</div>';
         $('#technologyTileList').append(htmlTile);
@@ -40,7 +40,7 @@ function hpInstantiateCategorie(categories) {
         id = 'c' + categories[i].categoryId;
         nbProjects = categories[i].nbProjects + (categories[i].nbProjects <= 1 ? ' projet' : ' projets');
         htmlTile = '<div class="tile" id="' + id + '">' + 
-                        '<p><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></p>' +
+                        '<div><strong>' + categories[i].name + '</strong><em>' + nbProjects + '</em></div>' +
                     '</div>';
         $("#categoryTileList").append(htmlTile);
     }
