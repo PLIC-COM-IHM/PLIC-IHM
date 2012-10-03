@@ -2,14 +2,26 @@
 <html>
     <head>
         <title>MTI</title>
-        <script language="JavaScript" src="js/jqueryjs"></script>
-        <script language="JavaScript" src="js/database.js"></script>
-        <script language="JavaScript" src="js/parseprojects.js"></script>
-        <script language="JavaScript" src="js/test.js"></script>
+        <script language="JavaScript" src="js/jquery.js"></script>
     </head>
     <body>
         <h1>MTI - Test</h1>
-        <div id="test1"></div>
-        <div id="test2"></div>
+        <div id="test1" onclick="console.log('Test 1')">
+        	<img id="plop" src="images/arrowleft.png" alt="Previous" onclick="alert('test')" height="50" width="50" />
+        </div>
+        <div id="test2" onclick="console.log('Test 2')">
+        	
+        </div>
+		<script>
+			$(document).ready(function($) {
+				var test = $('#test1');
+				var children = test.children();
+				for (var i=0; i < Things.length; i++) {
+					Things[i]
+				};
+				console.log(children);
+				children.trigger('click');
+			});
+		</script>
     </body>
 </html>

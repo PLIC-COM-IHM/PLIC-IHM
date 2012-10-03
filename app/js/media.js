@@ -15,9 +15,11 @@ function imedia ()
 }
 function ileft ()
 {
-	//alert ("left");
+        index = (index - 1 + project.images.length) % project.images.length;
+        $('#media').attr('src', project.folder + "media/images/" + project.images[index]);
 }
 function iright()
 {
-	//alert ("right");
+        index = (index + 1) % project.images.length;
+        $('#media').attr('src', project.folder + "media/images/" + project.images[index]);
 }

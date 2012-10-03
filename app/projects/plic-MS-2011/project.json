@@ -1,0 +1,14 @@
+{
+    "name" : "PLIC Microsoft",
+    "year" : 2011,
+    "short_description" : "Plic Microsoft promo 2011, en relation avec Microsoft",
+    "description" : "Plic Microsoft promo 2011, en relation avec Microsoft",
+    "members" : [
+
+    ],
+    "technologies" : [ "dotnet" ],
+    "categories" : [ "Application web" ],
+    "module" : "PLIC",
+    "logoPath" : null,
+    "headerPath" : null
+}

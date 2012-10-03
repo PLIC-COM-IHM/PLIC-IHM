@@ -1,0 +1,31 @@
+{
+    "name" : "PLIC COM-IHM",
+    "year" : 2013,
+    "short_description" : "Le plic com-ihm est responsable de la communication de la majeure et doit promouvoir la table tactile construite par la majeure",
+    "description" : "Le plic com-ihm est divisé en deux partie : une partie communication où l'on doit notamment organiser les JPOs et d'autres évènements internes.une partie ihm où l'on développe une application sur la table tactile construite par les étudiants précedents de la majeure",
+    "members" : [
+        {
+            "firstname" : "Jean-Christophe",
+            "lastname" : "Lanoë",
+            "login" : "lanoe_j",
+            "picture" : null
+       },
+        {
+            "firstname" : "Benjamin",
+            "lastname" : "Levoir",
+            "login" : "levoir_b",
+            "picture" : null
+       },
+        {
+            "firstname" : "Vincent",
+            "lastname" : "Oliveira",
+            "login" : "olivei_v",
+            "picture" : null
+       }
+    ],
+    "technologies" : [ "html5", "javascript" ],
+    "categories" : [ "Tactile", "Application web", "Communication" ],
+    "module" : "PLIC",
+    "logoPath" : null,
+    "headerPath" : null
+}

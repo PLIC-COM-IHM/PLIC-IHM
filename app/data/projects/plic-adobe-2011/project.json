@@ -1,0 +1,14 @@
+{
+    "name" : "PLIC ADOBE",
+    "year" : 2012,
+    "short_description" : "Plic Adobe année 2012, en relation avec l'éditeur.",
+    "description" : "Plic Adobe année 2012, en relation avec l'éditeur.",
+    "members" : [
+
+    ],
+    "technologies" : [ "flash" ],
+    "categories" : [ "Site web" ],
+    "module" : "PLIC",
+    "logoPath" : null,
+    "headerPath" : null
+}

@@ -1,0 +1,25 @@
+{
+    "name" : "Plic Adobe",
+    "year" : 2013,
+    "short_description" : "Le plic Adobe a pour vocation la promotion des technologies de l'editeur.",
+    "description" : "Ce plic est divisé en deux partie : une partie de développement dans les technologies flash et une partie relationnelle avec Adobe avec notamment l'organisation de l'Adobe Day",
+    "members" : [
+        {
+            "firstname" : "Thibaud",
+            "lastname" : "Friedrich",
+            "login" : "friedr_t",
+            "picture" : null
+       },
+        {
+            "firstname" : "Antoine",
+            "lastname" : "Fournier",
+            "login" : "fourni_f",
+            "picture" : null
+       }
+    ],
+    "technologies" : [ "flash" ],
+    "categories" : [ "Application mobile", "Communication" ],
+    "module" : "PLIC",
+    "logoPath" : null,
+    "headerPath" : null
+}

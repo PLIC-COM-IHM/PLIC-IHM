@@ -11,6 +11,19 @@ a { text-decoration: none; color: #ffffff; }
 body { margin: 10px 10px 0 0; font-size:16px; font-family:droid sans; color:#ffffff; background: #000000 url(../images/wall2.png) no-repeat; background-position: center center ; }
 
 
+/* Remove TUIO Canvas */
+#__tuiojs_connector_npTuioClient {
+	position: fixed;
+	top: -1000px;
+}
+
+/* Pahe Settings */
+html, body{
+	height: 100%;
+/*	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+/*	background-color: #151515 !important;*/
+}
+
 /* Header */
 header { height: 114px; }
 #previousButton { float:left; }
@@ -74,4 +87,17 @@ header { height: 114px; }
 /* Media */
 #mediaNavbar { clear: both; }
 #vquit { float: right; margin-bottom: 50px; }
-#dvid { clear: both; margin-top: 100px; text-align: center; }x
+#dvid { clear: both; margin-top: 100px; text-align: center; }
+
+/* @group Debug */
+
+.touch-debug {
+	width: 30px;
+	height: 30px;
+	background-color: red;
+	position: fixed;
+	border-radius: 15px;
+	z-index: 10000;
+}
+
+/* @end */

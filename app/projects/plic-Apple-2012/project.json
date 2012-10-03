@@ -1,0 +1,14 @@
+{
+    "name" : "PLIC Apple",
+    "year" : 2012,
+    "short_description" : "Plic Apple promo 2012 a développé une application iPhone",
+    "description" : "Plic Apple promo 2012 a développé une application iPhone",
+    "members" : [
+
+    ],
+    "technologies" : [ "ios" ],
+    "categories" : [ "Application mobile" ],
+    "module" : "PLIC",
+    "logoPath" : null,
+    "headerPath" : null
+}
