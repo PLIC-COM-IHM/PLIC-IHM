@@ -10,6 +10,9 @@ function page_main() {
     else if (filter == "c") {
         dbGetProjectOfCategory(filterId, createPage);
     }
+    else if (filter == "p") {
+        window.location = 'project.html' + location.search;
+    }
 }
 
 function createPage(projectList)

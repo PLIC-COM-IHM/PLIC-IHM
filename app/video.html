@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MTI</title>
+        <link rel="stylesheet" type="text/css" href="css/design.css">
+        <script language="JavaScript" src="js/jquery.js"></script>
+        <script language="JavaScript" src="js/database.js"></script>
+        <script language="JavaScript" src="js/video.js"></script>
+        <script language="JavaScript" src="js/navig.js"></script>
+        <script language="JavaScript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/tuiojs/tuio.js"></script>
+		<script type="text/javascript" src="js/tuiojs/tuiojs.npTuioClient.js"></script>
+		<script type="text/javascript" src="js/maths.js"></script>
+		<script type="text/javascript" src="js/tuio-touch-events.js"></script>
+    </head>
+    <body style="background: black;">
+		<div id="touch-0" class="touch-debug" style="display:none;"></div>
+		<div id="vquit" >
+		    <img src="images/close.png" alt="back" onclick="javascript:history.back()" />
+		</div>
+	
+		<!-- Video-->
+		<div id="dvid">
+		    <video id="vmedia" src="" onclick="videoread()" autoplay>
+			Vidéo indisponible.
+		    </video>
+		</div>
+    </body>
+</html>

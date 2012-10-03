@@ -1,0 +1,12 @@
+{
+    "name" : "PLIC Redac",
+    "year" : 2012,
+    "short_description" : "Le plic redac doit tenir à jour le blog MTI.",
+    "description" : "Le plic redac doit tenir à jour le blog MTI.",
+    "members" : [],
+    "technologies" : [ "javascript" ],
+    "categories" : [ "Redaction" ],
+    "module" : "PLIC",
+    "logoPath" : null,
+    "headerPath" : null
+}

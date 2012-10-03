@@ -1,5 +1,5 @@
 /*
-** Class vidéo pour tuiles vidéos
+** Class vidÃˆo pour tuiles vidÃˆos
 */
 
 
@@ -12,7 +12,9 @@ VDELAY = 2000; //ms
 VOFFSET = 6; //s
 
 // delay pictures
-PDELAY = 3000; //ms
+PDELAY = 2000; //ms
+
+var first = true;
 
 
 /*
@@ -24,9 +26,9 @@ $(document).ready(
 	{
 		var timer = null;
 		
-		timer = setTimeout(displayPictures,1000);
+		//timer = setTimeout(displayPictures,1000);
 		timer = setTimeout(displayUniPictures,1000);
-		timer = setTimeout(displayVideo, 1000);
+		//timer = setTimeout(displayVideo, 1000);
 	}
 );
 
@@ -57,7 +59,9 @@ function displayVideo()
 	videos = getElementsByClass("vtuile", "video");
 	for (i = 0 ; i < videos.length; i++)
 		changeOffset(videos[i]);
-	timer = setTimeout(displayVideo, VDELAY);
+		
+	if (videos.length > 0)
+		timer = setTimeout(displayVideo, VDELAY);
 }
 
 function changeOffset(video)
@@ -67,26 +71,29 @@ function changeOffset(video)
 
 
 /* Pictures */
-function displayPictures ()
+function displayPictures()
 {
-	imgs = getElementsByClass("ituile", "img");
-	for (i = 0 ; i < imgs.length; i++)
-		changePicture(imgs[i]);
+	$('.ituile').each(function(index) {
+		if (first || Math.floor(Math.random() * 4) == 0)
+			changePicture($(this));
+	});
 
+	first = false;
 	timer = setTimeout(displayPictures, PDELAY);
 }
 
 //
-function changePicture (img)
+function changePicture(img)
 {
-	projectId = img.id.substring(1);
-	project = getProjectById(parseInt(projectId));
+	projectId = parseInt(img.attr("id").substring(1));
+	project = getProjectById(projectId);
 	if (project != null)
 	{
 		random = Math.floor(Math.random() * (project.images.length));
 		imgUrl = project.folder + 'media/images/' + project.images[random];
-		console.debug('Changing image of project #' + project.id + ' by ' + imgUrl);
-		img.src = imgUrl;
+		img.fadeOut(100);
+		img.attr("src", imgUrl);
+		img.fadeIn(800);
 	}
 }
 
@@ -108,7 +115,6 @@ function changeUniPicture (img)
 	{
 		random = Math.floor(Math.random() * (project.images.length));
 		imgUrl = project.folder + 'media/images/' + project.images[random];
-		console.debug('Changing image of project #' + project.id + ' by ' + imgUrl);
 		img.src = imgUrl;
 	}
 }

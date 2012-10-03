@@ -5,12 +5,17 @@
         <link rel="stylesheet" type="text/css" href="css/design.css">
         <script language="JavaScript" src="js/jquery.js"></script>
         <script language="JavaScript" src="js/database.js"></script>
-        <script language="JavaScript" src="js/gallerie.js"></script>
+        <script language="JavaScript" src="js/gallery.js"></script>
         <script type="text/javascript" src="js/tuiles.js"></script>
-        <script language="JavaScript" src="js/init.js"></script>
 	<script language="JavaScript" src="js/navig.js"></script>
+	<script language="JavaScript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/tuiojs/tuio.js"></script>
+	<script type="text/javascript" src="js/tuiojs/tuiojs.npTuioClient.js"></script>
+	<script type="text/javascript" src="js/maths.js"></script>
+	<script type="text/javascript" src="js/tuio-touch-events.js"></script>
     </head>
     <body>
+		<div id="touch-0" class="touch-debug" style="display:none;"></div>
         <header>
             <img id="previousButton" src="images/arrowleft.png" alt="Previous" onclick="javascript:history.back()" height="64" width="64" />
             <img id="logo" src="images/logo.png" alt="MTI" />
@@ -26,22 +31,7 @@
 	<div id="content">
 		<h1>Photos</h1>
 
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
-		<img class="media" src="" alt="" onclick="" />
+		<div id="gallery"></div>
 	</div>
 	
 </body>

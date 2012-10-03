@@ -1,0 +1,31 @@
+{
+    "name" : "PLIC Jeux-vidéo",
+    "year" : 2012,
+    "short_description" : "Plic jeux-vidéo promo 2012",
+    "description" : "Plic jeux-vidéo promo 2012",
+    "members" : [
+        {
+            "firstname" : "Tony",
+            "lastname" : "Nguyen",
+            "login" : "nguyen_t",
+            "picture" : null
+       },
+        {
+            "firstname" : "Josselin",
+            "lastname" : "Muller",
+            "login" : "muller_j",
+            "picture" : null
+       },
+        {
+            "firstname" : "Theo",
+            "lastname" : "Richart",
+            "login" : "richar_t",
+            "picture" : null
+       }
+    ],
+    "technologies" : [ "dotnet" ],
+    "categories" : [ "Jeu video" ],
+    "module" : "PLIC",
+    "logoPath" : null,
+    "headerPath" : null
+}
