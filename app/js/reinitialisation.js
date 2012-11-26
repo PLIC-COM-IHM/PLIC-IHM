@@ -4,6 +4,7 @@ $(document).ready(function() {
 });
 
 $('html').bind('db_initialized', function () {
+    console.log('Database initialized');
     parseProjects();
     testProjects();
 });

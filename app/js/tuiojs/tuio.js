@@ -1,4 +1,4 @@
-
+/*
 (function() {
 	var TUIO = function() {
 		// Listener class
@@ -145,4 +145,5 @@
 	};
 	this.tuio = new TUIO(); 
 })();
+*/
 

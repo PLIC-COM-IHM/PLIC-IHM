@@ -8,7 +8,7 @@ h5 { font-size:22px; font-weight: normal; }
 h6 { font-size:18px; margin-bottom: 10px; font-weight: normal; font-style: italic; }
 strong { font-size:18px; text-align: center; padding: 10px; }
 a { text-decoration: none; color: #ffffff; }
-body { margin: 10px 10px 0 0; font-size:16px; font-family:droid sans; color:#ffffff; background: #000000 url(../images/wall2.png) no-repeat; background-position: center center ; }
+body { margin: 10px 10px 0 0; font-size:16px; font-family:droid sans; color:#ffffff; background: #000000 url(../images/wall2.png) no-repeat; background-position: center top; background-size: cover; }
 
 
 /* Remove TUIO Canvas */
@@ -38,6 +38,8 @@ header { height: 114px; }
 
 /* Content */
 #content { clear: both; margin-left: 74px; }
+#content #desc { margin-top: 30px; }
+#content #desc h5 { font-size: 17px; font-weight: bold; margin-top: 15px; }
 
 /* Tile */
 .tilelist { width: 50%; float: left;}

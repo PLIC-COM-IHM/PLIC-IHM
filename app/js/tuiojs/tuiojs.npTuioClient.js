@@ -1,4 +1,4 @@
-
+/*
 tuio.setConnector({
 	_failmsg: "Unable to initialize npTuioClient plugin.",
 	_id: "__tuiojs_connector_npTuioClient",
@@ -30,4 +30,4 @@ tuio.setConnector({
 function tuio_callback(type, sid, fid, x, y, angle)  {
 	tuio.callback(type, sid, fid, x, y, angle);
 }
-
+*/

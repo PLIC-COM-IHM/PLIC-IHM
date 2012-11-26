@@ -40,7 +40,7 @@ function displayVideo()
 
 function changeOffset(video)
 {
-	video.currentTime = video.currentTime + VOFFSET;
+    video.currentTime = video.currentTime + VOFFSET;
 }
 
 /* Flipping tiles */

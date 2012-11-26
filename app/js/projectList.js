@@ -29,7 +29,7 @@ function createPage(projectList)
                     '<img src="" alt="" />';
             }
             title = '<strong>' + projectList[i].name + '</strong>';
-            desc = '<em>' + projectList[i].shortDescription + '"</em>';
+            desc = '<em>' + projectList[i].shortDescription + '</em>';
             projectHtml = '<li><a href="project.html?' + id + '">' + image + title + desc + '</a></li>';
             $('#resultList').append(projectHtml);
     }

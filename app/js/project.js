@@ -26,7 +26,7 @@ function createPage(p)
         }
         $('#content h5').text(membersStr.substring(2));
     }
-    $('#content p').text(project.description);
+    $('#content #desc').html(project.description);
     
     $('.video video').attr('src', p.folder + 'media/videos/' + p.videoPath);
 }
